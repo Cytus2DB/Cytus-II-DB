@@ -6,7 +6,7 @@ from pydub import AudioSegment
 
 import os, re, json
 
-VERSION = "2.8"
+VERSION = "2.8.0"
 
 MAX_TIME = 900000000
 
@@ -318,7 +318,10 @@ def loadOS():
         else:
             files = []
 
-        os.mkdir("./res/converted/data/osfiles/%s" % chara)
+        try:
+            os.listdir("./res/converted/data/osfiles/%s" % chara)
+        except Exception:
+            os.mkdir("./res/converted/data/osfiles/%s" % chara)
 
         for i in cdata:
             # get time
@@ -400,6 +403,12 @@ def loadDB():
 
 
 def main():
+    # version sign
+    versions = getJson('./res/converted/data/versions.json')
+    if VERSION in versions:
+        print("Skipped", VERSION)
+        return
+    versions.append(VERSION)
     # assets
     do_avatars()
     do_imageviewer()
@@ -412,10 +421,6 @@ def main():
     loadIM()
     loadDB()
     loadOS()
-    # version sign
-    versions = getJson('./res/converted/data/versions.json')
-    if not VERSION in versions:
-        versions.append(VERSION)
     putJson('./res/converted/data/versions.json', versions)
     # fin
     print("Finished.")
