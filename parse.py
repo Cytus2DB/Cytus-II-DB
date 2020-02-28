@@ -10,13 +10,11 @@ VERSION = "2.8.0"
 
 MAX_TIME = 900000000
 
-langs  = ["en","ja","zh","ko","zh-TW","zh-CN"]
-cnames = {}
-
 BASEDATA = "./res/export/assets/game/common/bundleassets/datasheets"
 BASEIM   = "./res/export/assets/game/11_im/bundleassets"
 BASEOS   = "./res/export/assets/game/15_os/bundleassets"
 
+cnames = {}
 
 """
 File Utils
