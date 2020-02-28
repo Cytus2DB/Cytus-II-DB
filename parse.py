@@ -400,18 +400,24 @@ def loadDB():
 
 
 def main():
-    # Data
-    loadChara()
-    loadIM()
-    loadDB()
-    loadOS()
-    # Assets
+    # assets
     do_avatars()
     do_imageviewer()
     do_attachments('11_im')
     do_attachments('15_os')
     do_music()
     do_srt()
+    # data
+    loadChara()
+    loadIM()
+    loadDB()
+    loadOS()
+    # version sign
+    versions = getJson('./res/converted/data/versions.json')
+    if not VERSION in versions:
+        versions.append(VERSION)
+    putJson('./res/converted/data/versions.json', versions)
+    # fin
     print("Finished.")
 
 
