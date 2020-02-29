@@ -210,7 +210,7 @@ def handleiM(iMFile, rk):
         "rank": rk,
         "avatar": iMFile["AvatarId"].lower(),
         "name": iMFile["CharacterName"],
-        "title": iMFile["Titles"],
+        "titles": iMFile["Titles"],
         "likes": iMFile["LikeCount"],
         "replies": len(iMFile["Replies"]),
         "version": VERSION
@@ -287,6 +287,7 @@ def loadIM():
             {
                 "id": post["Id"].lower(),
                 "name": post["CharacterName"],
+                "titles": i["Titles"],
                 "avatar": post["AvatarId"].lower(),
                 "attachments": post["Attachments"],
                 "contents": plist,
@@ -404,9 +405,11 @@ def main():
     # version sign
     versions = getJson('./res/converted/data/versions.json')
     if VERSION in versions:
-        print("Skipped", VERSION)
+        print("Notice: v%s exists" % VERSION)
         return
     versions.append(VERSION)
+    with open('./web/src/.env', 'w') as f:
+        f.write("VERSION=%s" % VERSION)
     # assets
     do_avatars()
     do_imageviewer()
