@@ -6,7 +6,7 @@
     </div>
     <div class="header">
       <div :class="{ title:true, new: item.version==$route.query.v }">
-        {{item.title[parseInt($t('code'))]}}
+        {{item.titles[parseInt($t('code'))]}}
       </div>
       <div class="info">
         <div class="likes">

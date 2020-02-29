@@ -7,7 +7,7 @@
       :avatar="post.avatar"
       :name="post.name"
       :pid="post.id"
-      :title="post.title[parseInt($t('code'))]"
+      :title="post.titles[parseInt($t('code'))]"
       :text="post.contents[parseInt($t('code'))]"
       :attachments="post.attachments"/>
     <PostReply v-for="reply in replies" :key="reply.id"
@@ -55,8 +55,8 @@ export default {
       fetch(`./data/imposts/${this.$route.params.id}.json`).then(res => {
         this.loading = false;
         if (res.ok) res.json().then(data=>{
-          this.post = data;
           console.log(data);
+          this.post = data;
           this.replies = data.replies;
         }); else {
           this.error = res.status+' '+res.statusText
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list {
+.post {
   height: 100%;
   overflow-y: scroll;
 }

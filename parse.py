@@ -268,10 +268,13 @@ def loadIM():
         # check cache
         if i["Id"].lower() in cache:
             continue
-        plist = rlist = []
         post = getJson(BASEDATA+"/imdata/imposts/%s/posts.txt" % i["Id"].lower())
+        # trim contents
+        plist = []
         for pdata in post["Contents"]:
             plist.append(trimContent(pdata))
+        # parse replies
+        rlist = []
         for reply in post["Replies"]:
             replydata = []
             for rdata in reply["Contents"]:
