@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss">
 .im {
+  height: 100%;
   overflow: hidden;
 }
 </style>

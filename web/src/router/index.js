@@ -45,15 +45,16 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes,
-  beforeEach(to, from, next) {
-    console.log(to.path.startsWith('/login')||auth());
-    if (to.path.startsWith('/login')||auth()) {
-      if (window._czc)
-        window._czc.push(["_trackPageview", to.path, from.path]);
-      next();
-    } else next('/login');
-  }
+  routes
+});
+
+router.beforeEach((to, from, next)=>{
+  if (to.path.startsWith('/login') || auth()) {
+    if (window._czc){
+      window._czc.push(["_trackPageview", to.path, from.path]);
+    }
+    next();
+  } else next('/login');
 });
 
 export default router

@@ -11,9 +11,9 @@
       :text="post.contents[parseInt($t('code'))]"
       :attachments="post.attachments"/>
     <PostReply v-for="reply in replies" :key="reply.id"
-      :avatar="post.avatar"
-      :name="post.name"
-      :text="post.contents[parseInt($t('code'))]"/>
+      :avatar="reply.avatar"
+      :name="reply.name"
+      :text="reply.contents[parseInt($t('code'))]"/>
   </div>
 </template>
 
@@ -55,7 +55,6 @@ export default {
       fetch(`./data/imposts/${this.$route.params.id}.json`).then(res => {
         this.loading = false;
         if (res.ok) res.json().then(data=>{
-          console.log(data);
           this.post = data;
           this.replies = data.replies;
         }); else {
