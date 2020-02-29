@@ -408,7 +408,7 @@ def main():
         print("Notice: v%s exists" % VERSION)
         return
     versions.append(VERSION)
-    with open('./web/src/.env', 'w') as f:
+    with open('./web/.env', 'w') as f:
         f.write("VERSION=%s" % VERSION)
     # assets
     do_avatars()
