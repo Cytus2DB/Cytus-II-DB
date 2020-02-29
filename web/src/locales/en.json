@@ -1,0 +1,39 @@
+{
+	"code": "0",
+	"db": {
+		"download": "Download",
+		"filename": "Filename"
+	},
+	"header": {
+		"display": {
+			"character": "Character",
+			"timeline": "Timeline",
+			"title": "Display"
+		},
+		"language": "Language",
+		"version": "Version Code"
+	},
+	"home": {
+		"header": {
+			"line3": "User Group",
+			"line4": "[Access Granted]"
+		},
+		"text": {
+			"line1": "Hello, Ivy, Welcome to the Cytus II DB Knowledge Base built by A.R.C.",
+			"line2": "This knowledge base is for testing, research, and learning purposes only, and many features are yet to be improved",
+			"line3": "Donate here to support this database",
+			"line4": "Please select the module you want to use below"
+		}
+	},
+	"login": {
+		"login": "Login",
+		"username": "Username",
+		"uuid": "UUID"
+	},
+	"os": {
+		"bgm": "BGM",
+		"from": "From",
+		"title": "Title",
+		"to": "To"
+	}
+}

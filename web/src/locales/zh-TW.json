@@ -1,0 +1,39 @@
+{
+	"code": "4",
+	"db": {
+		"download": "下載",
+		"filename": "文件名"
+	},
+	"header": {
+		"display": {
+			"character": "人物",
+			"timeline": "時間線",
+			"title": "顯示方式"
+		},
+		"language": "語言",
+		"version": "版本號"
+	},
+	"home": {
+		"header": {
+			"line3": "用戶組",
+			"line4": "[允許訪問]"
+		},
+		"text": {
+			"line1": "你好, Ivy, 歡迎使用 A.R.C. 建設的 Cytus II DB 知識庫",
+			"line2": "本知識庫僅供測試、研究、學習使用，許多功能尚待完善",
+			"line3": "可以通過以下方式支援本數據庫",
+			"line4": "請在下方選擇您要使用的模塊"
+		}
+	},
+	"login": {
+		"login": "登錄",
+		"username": "用戶名",
+		"uuid": "機體編號"
+	},
+	"os": {
+		"bgm": "背景樂",
+		"from": "發件人",
+		"title": "標題",
+		"to": "收件人"
+	}
+}

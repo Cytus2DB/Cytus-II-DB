@@ -1,0 +1,39 @@
+{
+	"code": "5",
+	"db": {
+		"download": "下载",
+		"filename": "文件名"
+	},
+	"header": {
+		"display": {
+			"character": "人物",
+			"timeline": "时间线",
+			"title": "显示方式"
+		},
+		"language": "语言",
+		"version": "版本号"
+	},
+	"home": {
+		"header": {
+			"line3": "用户组",
+			"line4": "[允许访问]"
+		},
+		"text": {
+			"line1": "你好, Ivy, 欢迎使用 A.R.C. 建设的 Cytus II DB 知识库",
+			"line2": "本知识库仅供测试、研究、学习使用，许多功能尚待完善",
+			"line3": "可以通过以下方式支援本数据库",
+			"line4": "请在下方选择您要使用的模块"
+		}
+	},
+	"login": {
+		"login": "登录",
+		"username": "用户名",
+		"uuid": "机体编号"
+	},
+	"os": {
+		"bgm": "背景乐",
+		"from": "发件人",
+		"title": "标题",
+		"to": "收件人"
+	}
+}
