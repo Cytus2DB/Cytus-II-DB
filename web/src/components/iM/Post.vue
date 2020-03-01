@@ -65,10 +65,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.post {
-  height: 100%;
-  overflow-y: scroll;
-}
-</style>

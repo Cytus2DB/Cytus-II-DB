@@ -5,7 +5,7 @@
       {{item.name}}
     </div>
     <div class="header">
-      <div :class="{ title:true, new: item.version==$route.query.v }">
+      <div class="title" :class="{ new: item.version==$route.query.v }">
         {{item.titles[parseInt($t('code'))]}}
       </div>
       <div class="info">

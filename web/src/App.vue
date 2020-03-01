@@ -26,6 +26,11 @@ export default {
   src: local("Rajdhani"), url("fonts/Rajdhani-SemiBold.ttf");
 }
 
+@font-face {
+  font-family: NotoSansCJK;
+  src: local("Noto Sans CJK"), url("fonts/NotoSansCJK-Regular.otf");
+}
+
 *::-webkit-scrollbar-track {
   background-color: #0a0a0c;
 }
@@ -39,10 +44,11 @@ export default {
   background-color: #fff;
 }
 
-html, body {
+body {
   margin: 0;
+  overflow: hidden;
   background: #0a0a0c;
-  font-family: Rajdhani, "Noto Sans CJK SC", "Noto Sans SC", "Microsoft Yahei", -apple-system, sans-serif;
+  font-family: Rajdhani, NotoSansCJK, "Microsoft Yahei", -apple-system, sans-serif;
 }
 
 a {
@@ -51,14 +57,21 @@ a {
 }
 
 button {
-  color: white;
-  background: none;
   border: none;
-  padding: inherit;
-  font-size: 16px;
   outline: none;
   cursor: pointer;
+  padding: inherit;
+  font-size: 1.8em;
   font-family: inherit;
+  color: white;
+  background: none;
+}
+
+.im, .os, .db, .home {
+  height: calc(75vh - 2em);
+  @media screen and (max-width: 767px) {
+    height: calc(95vh - 2em);
+  }
 }
 
 .new {
@@ -94,5 +107,7 @@ button {
 
   background: #131418;
   border-radius: 5px;
+
+  overflow-y: hidden;
 }
 </style>

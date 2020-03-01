@@ -131,8 +131,9 @@ export default {
 header {
   height: 2em;
   display: flex;
-  justify-content: center;
+  box-sizing: border-box;
   
+  font-size: 1em;
   background: #1e1f26;
   border-radius: 5px 5px 0px 0px;
   @media screen and (max-width: 767px) {
@@ -140,28 +141,28 @@ header {
   }
 
   .header-l {
-    left: 0;
-    padding: 6px 12px;
+    left: .5em;
+    height: 2em;
+    display: flex;
     position: absolute;
-    display: inline-flex;
-    justify-content: center;
-    .title {
-      text-align: center;
-      font-size: 1em;
-      user-select: none;
-    }
+    align-items: center;
     a {
+      display: flex;
       margin-right: 6px;
+      img {
+        height: 1em;
+      }
     }
-    img {
-      height: 1.2em;
+    .title {
+      font-size: 1.2em;
+      user-select: none;
     }
   }
   .header-r {
-    right: 0;
-    padding: 3px 6px;
+    right: .5em;
+    height: 2em;
+    display: flex;
     position: absolute;
-    display: inline-flex;
   }
 }
 </style>

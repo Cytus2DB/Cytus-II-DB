@@ -18,20 +18,14 @@
       <p>{{$t("home.text.line4")}}</p>
     </div>
     <div class="buttons">
-      <router-link to="/im">
-        <div class="button">
-          <img src="@/assets/home-im.png" alt="iM" />iM
-        </div>
+      <router-link class="button" to="/im">
+        <img src="@/assets/home-im.png" alt="iM" />iM
       </router-link>
-      <router-link to="/os">
-        <div class="button">
-          <img src="@/assets/home-os.png" alt="OS" />OS
-        </div>
+      <router-link class="button" to="/os">
+        <img src="@/assets/home-os.png" alt="OS" />OS
       </router-link>
-      <router-link to="/db">
-        <div class="button">
-          <img src="@/assets/home-db.png" alt="DB" />DB
-        </div>
+      <router-link class="button" to="/db">
+        <img src="@/assets/home-db.png" alt="DB" />DB
       </router-link>
     </div>
   </div>
@@ -50,27 +44,21 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  height: 100%;
-  padding: 24px 24px;
-  display: flex;
+  padding: 0 24px;
   overflow-y: scroll;
-  flex-direction: column;
   font-size: 1.2em;
 
-  .body {
-    padding-top: 18px;
-    p {
-      margin-top: 8px;
-    }
-  }
   .header {
     color: gray;
     font-style: italic;
+    padding-top: 12px;
+  }
+  .body p {
+    margin: 12px 0px;
   }
   .buttons {
-    margin-bottom: 8px;
-    display: flex;
     width: 100%;
+    display: flex;
     flex-flow: wrap;
     a {
       color: #fff;
@@ -83,12 +71,12 @@ export default {
     font-size: 1.2em;
     padding: 16px 28px;
     cursor: pointer;
-    margin-top: 12px;
+    margin-bottom: 18px;
     margin-right: 18px;
     background: #2d303a;
     img {
       margin-bottom: 0.4em;
-      width: 64px;
+      width: 56px;
     }
     &:hover {
       background: #2d303a44;

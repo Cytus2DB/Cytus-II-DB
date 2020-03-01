@@ -1,12 +1,17 @@
 <template>
   <div class="folder">
     <div class="title" @click="()=>{folded = !folded;}">
-      {{title}}
+      {{name}}
     </div>
-    <router-link :class="{hidden: folded}" v-for="file in files" :key="file.id" :to="{
-      path: (location?location+'/':'')+file.id,
-      query: $route.query
-    }" append>
+    <router-link v-for="file in files" :key="file.id"
+      :class="{
+        hidden: folded,
+        new: file.version==$route.query.v
+      }"
+      :to="{
+        path: `${uuid}/${file.id}`,
+        query: $route.query
+      }" append>
       {{file.title}}
     </router-link>
   </div>
@@ -15,7 +20,7 @@
 <script>
 export default {
   name: 'Folder',
-  props: ['location', 'title', 'files'],
+  props: ['uuid', 'name', 'files'],
   data() {
     return {
       folded: true

@@ -51,10 +51,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.list {
-  height: 100%;
-  overflow-y: scroll;
-}
-</style>

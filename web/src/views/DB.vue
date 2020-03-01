@@ -3,11 +3,11 @@
     <Error v-if="error" :error="error"/>
     <Loading v-if="loading"/>
 
-    <div :class="{sidebar:true, hidden:$route.query.hide}">
+    <div class="sidebar" :class="{ hidden:$route.query.hide }">
       <Folder v-for="(info, uuid) in dblist"
-        :key="info.name"
         :uuid="uuid"
-        :title="info.title||info.name"
+        :key="info.name"
+        :name="info.name"
         :files="info.files"/>
     </div>
     <div class="content" v-if="$route.params.id">
