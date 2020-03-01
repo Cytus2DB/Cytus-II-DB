@@ -61,16 +61,20 @@ export default {
     display: flex;
     flex-direction: column;
     .title {
-      min-height: 40px;
-      padding: 0px 12px 12px 12px;
+      min-height: 58px;
       word-break: break-word;
     }
     .info {
       display: flex;
       justify-content: flex-end;
+      .likes {
+        min-width: 72px;
+      }
+      .replies {
+        min-width: 36px;
+      }
       .likes, .replies {
         padding: 10px;
-        min-width: 72px;
         font-size: 1.1em;
         img {
           height: 0.8em;
