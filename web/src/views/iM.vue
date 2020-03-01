@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss">
 .im {
-  overflow: hidden scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 </style>

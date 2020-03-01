@@ -129,6 +129,17 @@ export default {
             }
             this.versions.push(versionItem);
           });
+          // clear version
+          this.versions.push({
+            id: 'clear',
+            title: 'Disable',
+            onclick: ()=>{
+              if (this.$route.query.v) this.$router.push({
+                hash: this.$route.hash,
+                query: {...this.$route.query, v: null}
+              });
+            }
+          });
         })
       })
     }
