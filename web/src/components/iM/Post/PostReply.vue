@@ -12,8 +12,8 @@
 
 <script>
 export default {
-  name: "PostReply",
-  props: ["avatar", "name", "text"]
+  name: 'PostReply',
+  props: ['avatar', 'name', 'text']
 }
 </script>
 

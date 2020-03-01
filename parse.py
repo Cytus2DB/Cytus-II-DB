@@ -250,6 +250,7 @@ def loadChara():
     for i in os.listdir(folder):
         cdata = getJson("%s/%s" % (folder, i))
         cnames[i.split(".")[0]] = cdata["CharacterName"]
+    putJson("./res/converted/data/character.json", cnames)
 
 def loadIM():
     cache  = loadCache('data', 'im')
@@ -368,7 +369,9 @@ def loadOS():
     print("Finished OS")
 
 def loadDB():
-    folders = []
+    dblist = getJson("./res/converted/data/dblist.json")
+    if dblist == []:
+        dblist = {}
     extrafs = [
         (4, "./res/export/audios/extra", "Extra_Music", "./audios/extra"),
         (5, "./res/export/videos/extra", "Extra_Video", "./videos/extra"),
@@ -376,31 +379,44 @@ def loadDB():
         (5, "./res/export/videos/song_select", "Extra_SongSelect", "./videos/song_select")
     ]
     for chara in getJson(BASEDATA+"/gallerydata/folder.txt"):
-        files = []
+        cache = loadCache('data', 'db_%s' % chara["Id"])
+        if not chara["Id"] in dblist.keys():
+            dblist[chara["Id"]] = []
         for dbfile in getJson(BASEDATA+"/gallerydata/%s.txt" % chara["Id"]):
+            if dbfile["FileName"] in cache:
+                continue
             # NEKO special
             if dbfile["FileLocation"] == "nekoHacked(chaosGlitch)":
                 dbfile["FileLocation"] = "story_004"
             # add to filelist
-            files.append({
+            dblist[chara["Id"]].append({
                 "name": dbfile["FileLocation"],
                 "title": dbfile["FileName"],
                 "type": dbfile["Format"],
+                "version": VERSION,
             })
-        folders.append({"name": chara["Name"], "files": files})
+            cache.append(dbfile["FileName"])
+        saveCache('data', 'db_%s' % chara["Id"], cache)
     # Add extra files
     for extraf in extrafs:
-        files = []
+        # read cache and init
+        cache = loadCache('data', 'db_%s' % extraf[2])
+        if not extraf[2] in dblist.keys():
+            dblist[extraf[2]] = []
         for ef in os.listdir(extraf[1]):
             mname = ef.split(".")[0]
-            files.append({
+            # check cache
+            if mname in cache:
+                continue
+            dblist[extraf[2]].append({
                 "name": mname,
                 "title": mname,
                 "type": extraf[0],
-                "dir": extraf[3]
+                "version": VERSION,
+                "location": extraf[3],
             })
-        folders.append({"name": extraf[2], "files": files})
-    putJson("./res/converted/data/dblist.json", folders)
+        saveCache('data', 'db_%s' % extraf[2], cache)
+    putJson("./res/converted/data/dblist.json", dblist)
     print("Finished Database")
 
 

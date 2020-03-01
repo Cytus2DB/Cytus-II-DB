@@ -1,34 +1,51 @@
 <template>
   <header>
     <div class="header-l">
-      <router-link :to="`/im#${$route.params.id}`" v-if="$route.params.id">
+      <router-link
+        :to="{
+          path: '/im',
+          hash: `#${$route.params.id}`,
+          query: $route.query
+        }"
+        v-if="$route.params.id">
         <img src="@/assets/btn-back.svg" alt="Back">
       </router-link>
       <router-link
         :to="{
+          hash: $route.hash,
           query: {
             ...$route.query,
-            hide: (
-              this.$route.query.hide==null || this.$route.query.hide==='false'
-            ).toString()
+            hide: reverse(this.$route.query.hide)
           }
         }"
         v-if="$route.path.match(/(os|db)/)">
         <img src="@/assets/btn-list.svg" alt="List">
       </router-link>
+      <div class="title">{{$route.name}}</div>
     </div>
-    <div class="header-t">{{$route.name}}</div>
     <div class="header-r">
       <Options v-if="$route.name=='OS'"
         :title="$t('header.display.title')"
         :items="[{
           id: 'header.display.character',
           title: $t('header.display.character'),
-          onclick: ()=>{this.$router.push('/os/c')}
+          onclick: ()=>{this.$router.push({
+            hash: this.$route.hash,
+            query: {
+              ...this.$route.query,
+              view: 'character',
+            }
+          })}
         }, {
           id: 'header.display.timeline',
           title: $t('header.display.timeline'),
-          onclick: ()=>{this.$router.push('/os/t')}
+          onclick: ()=>{this.$router.push({
+            hash: this.$route.hash,
+            query: {
+              ...this.$route.query,
+              view: 'timeline',
+            }
+          })}
         }]" />
       <Options v-if="$route.path.match(/(im|os|db)/)"
         :title="$t('header.version')"
@@ -84,17 +101,24 @@ export default {
       localStorage.setItem('locale', locale);
       this.$i18n.locale = locale;
     },
+    reverse(val) {
+      return ( val==null || val==='false' ).toString()
+    },
     fetchData() {
       fetch('./data/versions.json').then(res=>{
         res.json().then(data=>{
           data.forEach(item => {
-            this.versions.push({
+            let versionItem = {
               id: item,
               title: item,
-              onclick: ()=>this.$router.push({
-                query: {...this.$route.query, v: item}
-              })
-            });
+              onclick: ()=>{
+                if (this.$route.query.v != item) this.$router.push({
+                  hash: this.$route.hash,
+                  query: {...this.$route.query, v: item}
+                });
+              }
+            }
+            this.versions.push(versionItem);
           });
         })
       })
@@ -120,15 +144,18 @@ header {
     padding: 6px 12px;
     position: absolute;
     display: inline-flex;
+    justify-content: center;
+    .title {
+      text-align: center;
+      font-size: 1em;
+      user-select: none;
+    }
+    a {
+      margin-right: 6px;
+    }
     img {
       height: 1.2em;
     }
-  }
-  .header-t {
-    font-size: 1.2em;
-    text-align: center;
-    padding: 5px 0;
-    user-select: none;
   }
   .header-r {
     right: 0;

@@ -1,5 +1,5 @@
 <template>
-  <router-link tag="div" class="item" :to="item.id" append>
+  <router-link tag="div" class="item" :to="{path:`/im/${item.id}`, query:$route.query}">
     <div class="avatar">
       <img :src="`./images/imavatars/${item.avatar}.png`" :alt="item.avatar" />
       {{item.name}}
@@ -24,8 +24,8 @@
 
 <script>
 export default {
-  name: "Item",
-  props: ["item"],
+  name: 'Item',
+  props: ['item'],
   mounted() {
     if (this.$route.hash==`#${this.item.id}`){
       this.$el.scrollIntoView();
@@ -44,6 +44,7 @@ export default {
   padding: 1em;
   background: #ffffff08;
   border-radius: 5px;
+  user-select: none;
   .avatar {
     width: 120px;
     display: flex;

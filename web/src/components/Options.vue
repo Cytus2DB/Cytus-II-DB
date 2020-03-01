@@ -19,8 +19,8 @@
 
 <script>
 export default {
-  name: "Options",
-  props: ["title", "items"],
+  name: 'Options',
+  props: ['title', 'items'],
   data() {
     return { fold: true };
   },

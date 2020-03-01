@@ -62,7 +62,11 @@ button {
 }
 
 .new {
-  color: yellow;
+  color: lame;
+}
+
+.hidden {
+  display: none;
 }
 
 #app {

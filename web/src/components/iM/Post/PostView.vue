@@ -9,7 +9,7 @@
         {{title}}
       </div>
       <div class="text" v-html="text"/>
-      <div v-for="item in attachments" :key="`${pid}-attach-${item}`">
+      <div class="image" v-for="item in attachments" :key="`${pid}-attach-${item}`">
         <img
           :src="`./images/imfiles/${item.toLowerCase()}.jpg`"
           :alt="item"
@@ -21,8 +21,8 @@
 
 <script>
 export default {
-  name: "PostView",
-  props: ["avatar", "name", "pid", "title", "text", "attachments"],
+  name: 'PostView',
+  props: ['avatar', 'name', 'pid', 'title', 'text', 'attachments'],
   methods: {
     viewImage(id) {
       window.open(`./images/imfiles/${id}.jpg`);
@@ -60,7 +60,7 @@ export default {
     .image {
       margin-top: 20px;
       img {
-        height: 8em;
+        height: 180px;
         cursor: pointer;
       }
     }

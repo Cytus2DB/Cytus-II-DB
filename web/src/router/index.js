@@ -33,13 +33,12 @@ const routes = [
   },
   {
     name:  'OS',
-    path:  '/os',
-    alias: ['/os/t/id?', '/os/c/:chara/:id?', ],
+    path:  '/os(/:chara/:id)?',
     component: () => import(/* webpackChunkName: "os" */ '@/views/OS.vue'),
   },
   {
     name: 'DB',
-    path: '/db/:chara?/:id?',
+    path: '/db/:id?',
     component: () => import(/* webpackChunkName: "db" */ '@/views/DB.vue'),
   }
 ]
