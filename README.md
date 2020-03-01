@@ -6,6 +6,12 @@ Donate [here](https://afdian.net/@dtsdao).
 
 ## Requirements
 
+This program can be executed on Linux/Windows/macOS.
+
+You must have at least 2 GB free space on your current disk.
+
+Make sure you have installed these softwares on your PC:
+
 - Git
 - Zip
 - Bash
@@ -16,7 +22,11 @@ Donate [here](https://afdian.net/@dtsdao).
 
 ## Compile
 
-### GooglePlay Version
+Compiling is not the "compiling", it means translating the original files to readable datasheets.
+
+It can be accomplished easily with tools here.
+
+### Google Play Version
 
 1. Clone this project with `git`.
 2. Put your `.obb` file into `./raw` and rename to `cytus.obb`
@@ -26,9 +36,9 @@ Donate [here](https://afdian.net/@dtsdao).
 6. Execute `./build.sh`
 7. Release your generated website.
 
-### Longyuan Version/龙渊版:
+### Longyuan Version / 龙渊版
 
-**注意：龙渊有些版本进行了加密，本自动化处理程序将无法支持，请自行解决资源提取问题**
+**注意：龙渊对某些版本进行了加密，本自动化处理程序将无法支持，请自行解决资源提取问题**
 
 1. 用 `git` 克隆本项目
 2. 将游戏资源导出至计算机中（未加密版本可使用 `./china.sh` ）
@@ -53,7 +63,7 @@ Donate [here](https://afdian.net/@dtsdao).
 
 ## Deploy To Github Pages
 
-Clone your repo to `./deploy` and execute `./deploy.sh`
+Clone your repo to `./dist` and execute `./deploy.sh`
 
 ## Announcement
 
