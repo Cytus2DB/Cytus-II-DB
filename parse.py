@@ -120,7 +120,7 @@ def do_imageviewer():
 Audio Section
 '''
 def do_music():
-    cache = loadCache('audio', 'music')
+    cache = loadCache('audio', 'mp3')
     folders = [
         (BASEOS+'/osbgms',   './res/converted/audios/bgms'),
         (BASEOS+'/ossounds', './res/converted/audios/sounds'),
@@ -134,7 +134,7 @@ def do_music():
             ifn = '%s/%s' % (folder[0], i)
             ofn = '%s/%s.mp3' % (folder[1], i.split('.')[0])
             # progress
-            print("Convert Music Progress: [%d/%d]" % (flist.index(i),len(flist)))
+            print("Convert Music Progress: [%d/%d]" % (flist.index(i)+1,len(flist)))
             # check cache
             if ofn in cache:
                 continue
@@ -142,8 +142,8 @@ def do_music():
             AudioSegment.from_wav(ifn).export(ofn, bitrate='128k')
             # add cache
             cache.append(ofn)
-    saveCache('audio', 'music', cache)
-    print("Finished Musics.")
+    saveCache('audio', 'mp3', cache)
+    print("Finished Audios.")
 
 '''
 Subtitles Section
@@ -250,7 +250,6 @@ def loadChara():
     for i in os.listdir(folder):
         cdata = getJson("%s/%s" % (folder, i))
         cnames[i.split(".")[0]] = cdata["CharacterName"]
-    putJson("./res/converted/data/character.json", cnames)
 
 def loadIM():
     cache  = loadCache('data', 'im')
@@ -317,7 +316,7 @@ def loadOS():
         cache = loadCache('data', 'os_%s' % chara)
         cdata = getJson(BASEDATA+"/osdata/%s" % cfile)
         if chara in oslist.keys():
-            files = oslist[chara]
+            files = oslist[chara]["files"]
         else:
             files = []
 
@@ -380,8 +379,10 @@ def loadDB():
     ]
     for chara in getJson(BASEDATA+"/gallerydata/folder.txt"):
         cache = loadCache('data', 'db_%s' % chara["Id"])
-        if not chara["Id"] in dblist.keys():
-            dblist[chara["Id"]] = []
+        if chara["Id"] in dblist.keys():
+            files = dblist[chara["Id"]]["files"]
+        else:
+            files = []
         for dbfile in getJson(BASEDATA+"/gallerydata/%s.txt" % chara["Id"]):
             if dbfile["FileName"] in cache:
                 continue
@@ -389,35 +390,39 @@ def loadDB():
             if dbfile["FileLocation"] == "nekoHacked(chaosGlitch)":
                 dbfile["FileLocation"] = "story_004"
             # add to filelist
-            dblist[chara["Id"]].append({
+            files.append({
                 "name": dbfile["FileLocation"],
                 "title": dbfile["FileName"],
                 "type": dbfile["Format"],
                 "version": VERSION,
             })
             cache.append(dbfile["FileName"])
+        dblist[chara["Id"]] = { "name": chara["Name"], "files": files}
         saveCache('data', 'db_%s' % chara["Id"], cache)
     # Add extra files
     for extraf in extrafs:
         # read cache and init
         cache = loadCache('data', 'db_%s' % extraf[2])
-        if not extraf[2] in dblist.keys():
-            dblist[extraf[2]] = []
+        if extraf[2] in dblist.keys():
+            files = dblist[extraf[2]]["files"]
+        else:
+            files = []
         for ef in os.listdir(extraf[1]):
             mname = ef.split(".")[0]
             # check cache
             if mname in cache:
                 continue
-            dblist[extraf[2]].append({
+            files.append({
                 "name": mname,
                 "title": mname,
                 "type": extraf[0],
                 "version": VERSION,
                 "location": extraf[3],
             })
+        dblist[extraf[2]] = { "name": extraf[2], "files": files}
         saveCache('data', 'db_%s' % extraf[2], cache)
     putJson("./res/converted/data/dblist.json", dblist)
-    print("Finished Database")
+    print("Finished DB")
 
 
 def main():

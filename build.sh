@@ -29,8 +29,6 @@ mkdir ./res/converted/images/osspecial
 python parse.py
 
 # static
-#cp -r ./static/images ./web/public
-#cp -r ./static/audios ./web/public
 cp -r ./res/export/images ./web/public
 cp -r ./res/export/videos ./web/public
 cp -r ./res/converted/data ./web/public
