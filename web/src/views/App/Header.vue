@@ -141,7 +141,7 @@ header {
   }
 
   .header-l {
-    left: .5em;
+    left: 12px;
     height: 2em;
     display: flex;
     position: absolute;
@@ -159,7 +159,7 @@ header {
     }
   }
   .header-r {
-    right: .5em;
+    right: 8px;
     height: 2em;
     display: flex;
     position: absolute;
