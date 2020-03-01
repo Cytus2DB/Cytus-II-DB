@@ -5,8 +5,8 @@
 
     <div class="sidebar" :class="{ hidden:($route.query.hide==='true') }">
       <Folder v-for="(info, uuid) in dblist"
+        :key="uuid"
         :uuid="uuid"
-        :key="info.name"
         :name="info.name"
         :files="info.files"/>
     </div>

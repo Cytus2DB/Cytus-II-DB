@@ -1,22 +1,22 @@
 <template>
   <div class="folder">
     <div class="title" @click="()=>{hidden = !hidden;}">
-      <img src="@/assets/os-open.svg" alt="dropdown">
+      <img src="@/assets/btn-drop.svg" alt="dropdown">
       {{name}}
     </div>
-    <router-link tag="div" class="item" v-for="file in files" :key="file.id||file.name"
+    <router-link tag="div" class="item" v-for="(file, id) in files" :key="id"
       :class="{
         hidden,
         new: file.version==$route.query.v,
       }"
       :to="{
-        path: `${$route.matched[0].path}/${uuid}/${file.id||file.name}`,
+        path: `${$route.matched[0].path}/${uuid}/${id}`,
         query: {
           ...$route.query,
           hide: isMobile()?'true':$route.query.hide
         }
       }" append>
-      {{file.title||file.name}}
+      {{file.name}}
     </router-link>
   </div>
 </template>

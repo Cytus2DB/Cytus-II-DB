@@ -318,7 +318,7 @@ def loadOS():
         if chara in oslist.keys():
             files = oslist[chara]["files"]
         else:
-            files = []
+            files = {}
 
         try:
             os.listdir("./res/converted/data/osfiles/%s" % chara)
@@ -347,11 +347,10 @@ def loadOS():
             )
             # add to filelist and timelist
             if not i["Id"].lower() in cache:
-                files.append({
-                    "id": i["Id"].lower(),
+                files[i["Id"].lower()] = {
                     "name": i["Names"][0],
                     "version": VERSION,
-                })
+                }
                 cache.append(i["Id"].lower())
             ostime.append({
                 "id": i["Id"].lower(),
@@ -382,7 +381,7 @@ def loadDB():
         if chara["Id"] in dblist.keys():
             files = dblist[chara["Id"]]["files"]
         else:
-            files = []
+            files = {}
         for dbfile in getJson(BASEDATA+"/gallerydata/%s.txt" % chara["Id"]):
             if dbfile["FileName"] in cache:
                 continue
@@ -390,12 +389,11 @@ def loadDB():
             if dbfile["FileLocation"] == "nekoHacked(chaosGlitch)":
                 dbfile["FileLocation"] = "story_004"
             # add to filelist
-            files.append({
-                "name": dbfile["FileLocation"],
-                "title": dbfile["FileName"],
+            files[dbfile["FileLocation"]] = {
+                "name": dbfile["FileName"],
                 "type": dbfile["Format"],
                 "version": VERSION,
-            })
+            }
             cache.append(dbfile["FileName"])
         dblist[chara["Id"]] = { "name": chara["Name"], "files": files}
         saveCache('data', 'db_%s' % chara["Id"], cache)
@@ -406,19 +404,18 @@ def loadDB():
         if extraf[2] in dblist.keys():
             files = dblist[extraf[2]]["files"]
         else:
-            files = []
+            files = {}
         for ef in os.listdir(extraf[1]):
             mname = ef.split(".")[0]
             # check cache
             if mname in cache:
                 continue
-            files.append({
+            files[mname] = {
                 "name": mname,
-                "title": mname,
                 "type": extraf[0],
                 "version": VERSION,
                 "location": extraf[3],
-            })
+            }
         dblist[extraf[2]] = { "name": extraf[2], "files": files}
         saveCache('data', 'db_%s' % extraf[2], cache)
     putJson("./res/converted/data/dblist.json", dblist)
