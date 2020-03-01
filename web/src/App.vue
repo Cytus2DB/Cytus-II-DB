@@ -28,16 +28,23 @@ export default {
 
 @font-face {
   font-family: NotoSansCJK;
-  src: local("Noto Sans CJK"), url("fonts/NotoSansCJK-Regular.otf");
+  src: local("Noto Sans CJK SC"),
+    local("Noto Sans CJK TC"),
+    local("Noto Sans CJK JP"),
+    local("Noto Sans CJK KR");
+}
+
+* {
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 *::-webkit-scrollbar-track {
-  background-color: #0a0a0c;
+  background-color: #ffffff08;
 }
 
 *::-webkit-scrollbar {
-  width: 6px;
-  background-color: #0a0a0c;
+  width: 8px;
+  background-color: #ffffff08;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -48,7 +55,7 @@ body {
   margin: 0;
   overflow: hidden;
   background: #0a0a0c;
-  font-family: Rajdhani, NotoSansCJK, "Microsoft Yahei", -apple-system, sans-serif;
+  font-family: Rajdhani, NotoSansCJK, "Source Sans Pro", "Microsoft Yahei", -apple-system, sans-serif;
 }
 
 a {
@@ -75,7 +82,7 @@ button {
 }
 
 .new {
-  color: lame;
+  color: lime;
 }
 
 .hidden {

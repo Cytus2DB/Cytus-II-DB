@@ -1,27 +1,19 @@
 <template>
   <div class="db">
-    <Error v-if="error" :error="error"/>
-    <Loading v-if="loading"/>
-
-    <div class="sidebar" :class="{ hidden:($route.query.hide==='true') }">
-      <Folder v-for="(info, uuid) in dblist"
-        :uuid="uuid"
-        :key="info.name"
-        :name="info.name"
-        :files="info.files"/>
+    <div class="content">
+      <Error v-if="error" :error="error"/>
+      <Loading v-if="loading"/>
+      <!-- TODO -->
     </div>
-    <router-view/>
   </div>
 </template>
 
 <script>
-import Error from '@/components/Error';
-import Loading from '@/components/Loading';
-
-import Folder from '@/components/System/Folder';
+import Error from '../Error';
+import Loading from '../Loading';
 
 export default {
-  name: 'DB',
+  name: 'DBFile',
   data() {
     return {
       error: null,
@@ -32,10 +24,12 @@ export default {
   components: {
     Error,
     Loading,
-    Folder,
   },
   created () {
     this.fetchData()
+  },
+  watch: {
+    '$route': 'fetchData'
   },
   methods: {
     fetchData() {
@@ -55,16 +49,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.db {
-  .sidebar {
-    width: 12em;
-    height: 100%;
-    font-size: 1.2em;
-    overflow-y: scroll;
-    background: #ffffff08;
-    @media screen and (max-width: 767px) {
-      width: 100%;
-    }
-  }
-}
+
 </style>

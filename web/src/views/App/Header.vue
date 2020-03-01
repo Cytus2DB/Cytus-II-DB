@@ -7,7 +7,7 @@
           hash: `#${$route.params.id}`,
           query: $route.query
         }"
-        v-if="$route.params.id">
+        v-if="$route.matched[0]&&$route.matched[0].path=='/im'&&$route.params.id">
         <img src="@/assets/btn-back.svg" alt="Back">
       </router-link>
       <router-link
@@ -18,38 +18,16 @@
             hide: reverse(this.$route.query.hide)
           }
         }"
-        v-if="$route.path.match(/(os|db)/)">
+        v-if="
+          $route.matched[0] && (
+          $route.matched[0].path=='/db' ||
+          $route.matched[0].path=='/os'
+        )">
         <img src="@/assets/btn-list.svg" alt="List">
       </router-link>
       <div class="title">{{$route.name}}</div>
     </div>
     <div class="header-r">
-      <Options v-if="$route.name=='OS'"
-        :title="$t('header.display.title')"
-        :items="[{
-          id: 'header.display.character',
-          title: $t('header.display.character'),
-          onclick: ()=>{this.$router.push({
-            hash: this.$route.hash,
-            query: {
-              ...this.$route.query,
-              view: 'character',
-            }
-          })}
-        }, {
-          id: 'header.display.timeline',
-          title: $t('header.display.timeline'),
-          onclick: ()=>{this.$router.push({
-            hash: this.$route.hash,
-            query: {
-              ...this.$route.query,
-              view: 'timeline',
-            }
-          })}
-        }]" />
-      <Options v-if="$route.path.match(/(im|os|db)/)"
-        :title="$t('header.version')"
-        :items="versions" />
       <Options :title="$t('header.language')"
         :items="[{
           id: 'header.language.en',
@@ -76,6 +54,37 @@
           title: '中文<简体>',
           onclick: ()=>setLocale('zh-CN')
         }]" />
+      <Options v-if="$route.name=='OS'"
+        :title="$t('header.display.title')"
+        :items="[{
+          id: 'header.display.character',
+          title: $t('header.display.character'),
+          onclick: ()=>{this.$router.push({
+            hash: this.$route.hash,
+            query: {
+              ...this.$route.query,
+              view: 'character',
+            }
+          })}
+        }, {
+          id: 'header.display.timeline',
+          title: $t('header.display.timeline'),
+          onclick: ()=>{this.$router.push({
+            hash: this.$route.hash,
+            query: {
+              ...this.$route.query,
+              view: 'timeline',
+            }
+          })}
+        }]" />
+      <Options v-if="
+          $route.matched[0] && (
+          $route.matched[0].path=='/db' ||
+          $route.matched[0].path=='/os' ||
+          $route.matched[0].path=='/im'
+        )"
+        :title="$t('header.version')"
+        :items="versions" />
     </div>
   </header>
 </template>

@@ -2,7 +2,7 @@
   <div class="view">
     <div class="avatar">
       <img :src="`./images/imavatars/${avatar}.png`" :alt="avatar" />
-      {{name}}
+      <div class="name">{{name}}</div>
     </div>
     <div class="content">
       <div class="title">
@@ -33,25 +33,26 @@ export default {
 
 <style lang="scss" scoped>
 .view {
+  margin: 12px;
+  padding: 12px;
   display: flex;
-  margin: 1em;
-  padding: 1em;
-  background: #ffffff08;
   border-radius: 5px;
+  background: #ffffff08;
   .avatar {
-    width: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    word-break: break-all;
+    min-width: 108px;
+    max-width: 108px;
+    user-select: none;
     text-align: center;
     img {
       width: 64px;
     }
+    .name {
+      word-break: break-all;
+    }
   }
   .content {
     white-space: pre-line;
-    padding: 0em 1em 1em 1em;
+    padding: 0 16px;
     .title {
       margin-bottom: 1em;
       font-size: 1.2em;
@@ -60,7 +61,8 @@ export default {
     .image {
       margin-top: 20px;
       img {
-        height: 180px;
+        width: 12em;
+        max-width: 100%;
         cursor: pointer;
       }
     }

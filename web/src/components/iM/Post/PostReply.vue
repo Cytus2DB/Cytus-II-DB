@@ -2,7 +2,7 @@
   <div class="reply">
     <div class="avatar">
       <img :src="`./images/imavatars/${avatar}.png`" :alt="avatar" />
-      {{name}}
+      <div class="name">{{name}}</div>
     </div>
     <div class="content">
       <div class="text" v-html="text"/>
@@ -20,29 +20,25 @@ export default {
 <style lang="scss" scoped>
 .reply {
   display: flex;
-  margin: 1em;
-  padding: 1em;
-  background: #ffffff08;
+  margin: 12px;
+  padding: 12px;
   border-radius: 5px;
+  background: #ffffff08;
   .avatar {
-    width: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    word-break: break-all;
+    min-width: 108px;
+    max-width: 108px;
+    user-select: none;
     text-align: center;
     img {
       width: 64px;
     }
+    .name {
+      word-break: break-all;
+    }
   }
   .content {
+    padding: 0 12px;
     white-space: pre-line;
-    padding: 0em 1em 1em 1em;
-    .title {
-      margin-bottom: 1em;
-      font-size: 1.2em;
-      color: #00b0ff;
-    }
   }
 }
 </style>

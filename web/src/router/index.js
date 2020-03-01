@@ -32,15 +32,25 @@ const routes = [
     }]
   },
   {
-    name:  'OS',
-    path:  '/os(/:folder/:id)?',
+    name: 'OS',
+    path: '/os',
     component: () => import(/* webpackChunkName: "os" */ '@/views/OS.vue'),
+    children: [{
+      name: 'OS Query',
+      path: ':folder/:id',
+      component: () => import(/* webpackChunkName: "os" */ '@/components/System/DBFile.vue'),
+    }]
   },
   {
     name: 'DB',
-    path: '/db(/:folder/:id)?',
+    path: '/db',
     component: () => import(/* webpackChunkName: "db" */ '@/views/DB.vue'),
-  }
+    children: [{
+      name: 'DB Query',
+      path: ':folder/:id',
+      component: () => import(/* webpackChunkName: "db" */ '@/components/System/DBFile.vue'),
+    }]
+  },
 ]
 
 const router = new VueRouter({

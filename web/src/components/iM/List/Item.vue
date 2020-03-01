@@ -2,7 +2,7 @@
   <router-link tag="div" class="item" :to="{path:`/im/${item.id}`, query:$route.query}">
     <div class="avatar">
       <img :src="`./images/imavatars/${item.avatar}.png`" :alt="item.avatar" />
-      {{item.name}}
+      <div class="name">{{item.name}}</div>
     </div>
     <div class="header">
       <div class="title" :class="{ new: item.version==$route.query.v }">
@@ -39,21 +39,21 @@ export default {
   cursor: pointer;
 }
 .item {
+  margin: 12px;
+  padding: 12px;
   display: flex;
-  margin: 1em;
-  padding: 1em;
-  background: #ffffff08;
-  border-radius: 5px;
   user-select: none;
+  border-radius: 5px;
+  background: #ffffff08;
   .avatar {
-    width: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    word-break: break-all;
+    min-width: 108px;
+    max-width: 108px;
     text-align: center;
     img {
       width: 64px;
+    }
+    .name {
+      word-break: break-all;
     }
   }
   .header {
@@ -61,7 +61,8 @@ export default {
     display: flex;
     flex-direction: column;
     .title {
-      margin: 0em 1.2em 3em 1.2em;
+      min-height: 40px;
+      padding: 0px 12px 12px 12px;
       word-break: break-word;
     }
     .info {
@@ -69,6 +70,7 @@ export default {
       justify-content: flex-end;
       .likes, .replies {
         padding: 10px;
+        min-width: 72px;
         font-size: 1.1em;
         img {
           height: 0.8em;
