@@ -1,7 +1,7 @@
 <template>
   <router-link tag="div" class="item" :to="{path:`/im/${item.id}`, query:$route.query}">
     <div class="avatar">
-      <img :src="`./images/imavatars/${item.avatar}.png`" :alt="item.avatar" />
+      <img :src="`./images/imavatars/${item.avatar}.png`" :alt="item.avatar"/>
       <div class="name">{{item.name}}</div>
     </div>
     <div class="header">

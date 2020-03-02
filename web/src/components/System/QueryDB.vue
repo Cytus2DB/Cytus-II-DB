@@ -16,7 +16,7 @@
             subtitle: {
               url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
             }
-          }" />
+          }"/>
         </div>
         <div class="audio" v-if="current().type==2||current().type==4">
           <AudioPlayer theme="#2d303a" :music="{
@@ -24,7 +24,7 @@
             src: filepath(),
             title: current().name,
             artist: this.$route.params.id,
-          }" preload />
+          }" preload/>
         </div>
         <div class="image" v-if="current().type==3">
           <!-- TODO -->

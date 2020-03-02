@@ -23,13 +23,13 @@
     </div>
     <div class="buttons">
       <router-link class="button" to="/im">
-        <img src="@/assets/home-im.png" alt="iM" />iM
+        <img src="@/assets/home-im.png" alt="iM"/>iM
       </router-link>
       <router-link class="button" to="/os">
-        <img src="@/assets/home-os.png" alt="OS" />OS
+        <img src="@/assets/home-os.png" alt="OS"/>OS
       </router-link>
       <router-link class="button" to="/db">
-        <img src="@/assets/home-db.png" alt="DB" />DB
+        <img src="@/assets/home-db.png" alt="DB"/>DB
       </router-link>
     </div>
   </div>

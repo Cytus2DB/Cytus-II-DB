@@ -53,7 +53,7 @@
           id: 'header.language.zh-CN',
           title: '中文<简体>',
           onclick: ()=>setLocale('zh-CN')
-        }]" />
+        }]"/>
       <Options v-if="$route.matched[0]&&$route.matched[0].path=='/os'"
         :title="$t('header.display.title')"
         :items="[{
@@ -80,7 +80,7 @@
               }
             })
           }
-        }]" />
+        }]"/>
       <Options v-if="
           $route.matched[0] && (
           $route.matched[0].path=='/db' ||
@@ -88,7 +88,7 @@
           $route.matched[0].path=='/im'
         )"
         :title="$t('header.version')"
-        :items="versions" />
+        :items="versions"/>
     </div>
   </header>
 </template>

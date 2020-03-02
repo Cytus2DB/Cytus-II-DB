@@ -1,7 +1,7 @@
 <template>
   <div class="view">
     <div class="avatar">
-      <img :src="`./images/imavatars/${avatar}.png`" :alt="avatar" />
+      <img :src="`./images/imavatars/${avatar}.png`" :alt="avatar"/>
       <div class="name">{{name}}</div>
     </div>
     <div class="content">

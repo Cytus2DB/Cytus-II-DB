@@ -2,7 +2,7 @@
   <div class="options">
       <div class="title" @click="toggle">
         <span>{{title}}</span>
-        <img src="@/assets/btn-drop.svg" alt="dropdown" />
+        <img src="@/assets/btn-drop.svg" alt="dropdown"/>
       </div>
       <div :class="{ hidden }">
         <div

@@ -13,21 +13,44 @@
             url: `./data/subtitles/${osfile.res.split('.')[0].toLowerCase()}_${$i18n.locale}.vtt`
           },
           autoplay: false
-        }" />
+        }"/>
       </div>
-      <div v-for="(content, index) in osfile.contents[parseInt($t('code'))]"
+      <div v-for="(item, index) in osfile.contents[parseInt($t('code'))]"
         :key="`${$route.params.id}_${$i18n.locale}_${index}`">
-        <div class="audio" v-if="content.type=='bgm'">
+        <div class="hint" v-if="item.type=='text'" v-html="item.content"/>
+        <div class="audio" v-if="item.type=='bgm'">
           <AudioPlayer theme="#2d303a" :music="{
             pic: '@/assets/empty.png',
-            src: `./audios/bgms/${content.attrs[0].toLowerCase()}.mp3`,
+            src: `./audios/bgms/${item.attrs[0].toLowerCase()}.mp3`,
+            loop: 'one',
+            mutex: false,
             title: $t('os.bgm'),
-            artist: content.attrs[0],
-          }" preload />
+            artist: item.attrs[0],
+          }" preload/>
         </div>
-        <div class="image" v-if="content.type=='bgm'">
-
+        <div class="audio" v-if="item.type=='sound'">
+          <AudioPlayer theme="#2d303a" :music="{
+            pic: '@/assets/empty.png',
+            src: `./audios/sounds/${item.attrs[0].toLowerCase()}.mp3`,
+            loop: 'none',
+            mutex: false,
+            title: item.attrs[1],
+            artist: item.attrs[0],
+          }" preload/>
         </div>
+        <div class="image" v-if="item.type=='image'">
+          <img :alt="item.attrs[0]" :src="`./images/osfiles/${item.attrs[0].toLowerCase()}.jpg`"
+            @click="()=>window.open(`./images/osfiles/${item.attrs[0].toLowerCase()}.jpg`)">
+        </div>
+        <JsonObject v-if="item.type=='json'" :raw="item"/>
+        <MailObject v-if="item.type=='mail'"
+          :title="item.attrs[0]"
+          :from="item.attrs[1]"
+          :to="item.attrs[2]"
+          :content="item.content"/>
+        <TextObject v-if="item.type=='conversation'"
+          :name="item.attrs[0]"
+          :content="item.content"/>
       </div>
     </div>
   </div>
@@ -41,6 +64,10 @@ import 'vue-dplayer/dist/vue-dplayer.css';
 
 import VideoPlayer from 'vue-dplayer';
 import AudioPlayer from 'vue-aplayer';
+
+import JsonObject from './Objects/JsonObject';
+import MailObject from './Objects/MailObject';
+import TextObject from './Objects/TextObject';
 
 export default {
   name: 'QueryOS',
@@ -58,6 +85,9 @@ export default {
     Loading,
     AudioPlayer,
     VideoPlayer,
+    JsonObject,
+    MailObject,
+    TextObject,
   },
   created () {
     this.fetchData()
@@ -98,9 +128,6 @@ export default {
   overflow-y: scroll;
   display: inline-block;
   box-sizing: border-box;
-  .info {
-    margin-bottom: 16px;
-  }
   .loading {
     width: calc(80vw - 332px);
     @media screen and (max-width: 767px) {
@@ -113,6 +140,12 @@ export default {
     aplyer-icon:hover {
       opacity: .2;
     }
+  }
+  .audio, .video, .image, .hint {
+    margin-bottom: 16px;
+  }
+  .hint {
+    white-space: pre-line;
   }
 }
 </style>
