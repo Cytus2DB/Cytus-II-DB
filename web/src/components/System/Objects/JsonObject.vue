@@ -30,8 +30,8 @@
     <template v-if="file.type===2">
       <div class="image" v-for="item in file.data" :key="item.Id">
         <img :alt="item.Id"
-          :src="`./images/osspecial/${item.Id.toLowerCase()}.jpg`"
-          @click="()=>viewImage(`./images/osspecial/${item.Id.toLowerCase()}.jpg`)">
+          :src="`./images/osfiles/${item.Id.toLowerCase()}.jpg`"
+          @click="()=>viewImage(`./images/osfiles/${item.Id.toLowerCase()}.jpg`)">
       </div>
     </template>
   </div>
@@ -115,6 +115,9 @@ export default {
       white-space: pre-line;
       background: #ffffff10;
     }
+  }
+  .image img {
+    width: 100%;
   }
 }
 </style>

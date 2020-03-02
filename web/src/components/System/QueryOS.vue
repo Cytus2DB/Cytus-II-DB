@@ -150,5 +150,8 @@ export default {
   .hint {
     white-space: pre-line;
   }
+  .image img {
+    max-width: 100%;
+  }
 }
 </style>

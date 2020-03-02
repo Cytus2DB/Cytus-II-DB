@@ -43,11 +43,11 @@ if [ ! -d "./res/apk/assets/bin/" ]; then
 fi
 
 # move unity
-mv ./res/apk/assets/bin/Data/* ./res/unity
+mv ./res/apk/assets/bin/Data/* ./res/unitydata
 echo "Migrated Unity."
 
 # move bundles
-mv ./res/apk/assets/AssetBundles/* ./res/bundles
+mv ./res/apk/assets/AssetBundles/* ./res/unitybundles
 
 # raw assets
 mv ./res/apk/assets/RawAssets/*        ./res/export/videos
