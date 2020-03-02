@@ -8,7 +8,7 @@ echo "================================="
 # clean build
 rm -rf ./web/public/data ./web/public/audios ./web/public/images ./web/public/videos
 
-if [ ! $1 ] then
+if [ ! $1 ]; then
   echo "Version not defined!"
   exit
 fi

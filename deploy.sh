@@ -8,7 +8,7 @@ echo "================================="
 username  = "A.R.C"
 useremail = "admin@arc.co"
 
-if [ ! $1 ] then
+if [ ! $1 ]; then
   echo "Git repo not defined!"
   exit
 fi

@@ -10,7 +10,7 @@ rm -rf ./res/export/*
 rm -rf ./res/unitydata/*
 rm -rf ./res/unitybundles/*
 
-if [ ! $1 ] then
+if [ ! $1 ]; then
   echo "Version not defined!"
   exit
 fi
@@ -36,7 +36,7 @@ unzip -q "./raw/$1.apk" -d ./res/apk
 echo "Unziped APK."
 
 # version check
-if [ ! -d "./res/apk/assets/bin/" ];then
+if [ ! -d "./res/apk/assets/bin/" ]; then
   echo "This APK is encrypted!"
   rm -rf "./res/apk"
   exit
