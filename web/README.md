@@ -14,8 +14,9 @@ It's written in JavaScript with the framework Vue.
 ### Vue
 
 - vue-cli
-- vue-router
 - vue-i18n
+- vue-gtag
+- vue-router
 
 ### Media
 
