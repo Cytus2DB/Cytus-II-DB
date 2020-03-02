@@ -46,6 +46,14 @@ It can be accomplished easily with tools here.
 4. 运行 `./build.sh {version}`
 5. 发布你编译的网页
 
+## Clean
+
+If you did anything wrong or you just want a fresh start, execute `./clean.sh`
+
+But as the version data is stored in cache, this shouldn't be operated unless you keep your old version, or your update log will be lost.
+
+BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can delete the cache data of any certain module as you wish.
+
 ## Export Instruction
 
 1.  Load folder `./res/unitybundles`
@@ -55,7 +63,7 @@ It can be accomplished easily with tools here.
 5.  Enable `Options > Export options > Convert Texture2D(PNG)`
 6.  Filter `AudioClip`, `TextAsset`, `Sprite`
 7.  `Export > Filtered assets` to `./res/export`
-8.  Restart AssetStudio
+8.  Restart(close&open) AssetStudio 
 9.  Load folder `./res/unitydata`
 10. Export `Sprite` : `{character}_s` to `./res/export/images/characters`
 11. Export `AudioClip` : `story_*` to `./res/export/audios/story`
