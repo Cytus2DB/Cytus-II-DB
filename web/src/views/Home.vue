@@ -45,8 +45,9 @@ export default {
 <style lang="scss" scoped>
 .home {
   padding: 0 24px;
-  overflow-y: scroll;
   font-size: 1.2em;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   .header {
     color: gray;

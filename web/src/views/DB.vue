@@ -57,10 +57,12 @@ export default {
 <style lang="scss" scoped>
 .db {
   .sidebar {
-    width: 12em;
+    width: 256px;
     height: 100%;
     font-size: 1.2em;
+    overflow-x: hidden;
     overflow-y: scroll;
+    display: inline-block;
     background: #ffffff08;
     @media screen and (max-width: 767px) {
       width: 100%;

@@ -34,20 +34,20 @@ export default {
     local("Noto Sans CJK KR");
 }
 
-* {
+div {
   -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-*::-webkit-scrollbar-track {
+div::-webkit-scrollbar-track {
   background-color: #ffffff08;
 }
 
-*::-webkit-scrollbar {
+div::-webkit-scrollbar {
   width: 8px;
   background-color: #ffffff08;
 }
 
-*::-webkit-scrollbar-thumb {
+div::-webkit-scrollbar-thumb {
   background-color: #fff;
 }
 
@@ -115,6 +115,7 @@ button {
   background: #131418;
   border-radius: 5px;
 
+  overflow-x: hidden;
   overflow-y: hidden;
 }
 </style>

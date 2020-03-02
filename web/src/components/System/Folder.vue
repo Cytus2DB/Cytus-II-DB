@@ -40,21 +40,22 @@ export default {
 
 <style lang="scss" scoped>
 .folder {
-  margin: .4em;
+  margin: 6.4px;
   cursor: pointer;
   user-select: none;
+  word-break: break-all;
   .title {
     display: flex;
-    padding: .2em .4em;
+    padding: 3.2px 6.4px;
     align-items: center;
     background: #ffffff08;
     img {
       height: .8em;
-      padding-right: .4em;
+      padding-right: 6.4px;
     }
   }
   .item {
-    padding: .2em .4em;
+    padding: 3.2px 6.4px;
     margin-bottom: 1px;
     background: #ffffff10;
   }
