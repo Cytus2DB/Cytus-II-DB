@@ -6,9 +6,9 @@ echo "          A.R.C.  Tech.          "
 echo "================================="
 
 # clean
-rm -rf ./res/export/*
-rm -rf ./res/unitydata/*
-rm -rf ./res/unitybundles/*
+rm -rf ./res/export
+rm -rf ./res/unitydata
+rm -rf ./res/unitybundles
 
 if [ ! $1 ]; then
   echo "Version not defined!"
