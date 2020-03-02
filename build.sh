@@ -26,7 +26,7 @@ mkdir ./res/converted/images/osavatars
 mkdir ./res/converted/images/osspecial
 
 # script
-python parse.py
+python parse.py $1
 
 # static
 cp -r ./res/export/images ./web/public
@@ -38,4 +38,4 @@ cp -r ./res/converted/images ./web/public
 # raw assets
 cp -r ./res/export/assets/game/15_os/bundleassets/osstickers ./web/public/images
 
-#cd ./web && npm i && npm run build
+cd ./web && npm i && npm run build

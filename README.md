@@ -29,11 +29,11 @@ It can be accomplished easily with tools here.
 ### Google Play Version
 
 1. Clone this project with `git`.
-2. Put your `.obb` file into `./raw` and rename to `cytus.obb`
-3. Put your `.apk` file into `./raw` and rename to `cytus.apk`
-4. Execute `./asset.sh`
+2. Put your `.obb` file into `./raw` and rename to `{version}.obb`
+3. Put your `.apk` file into `./raw` and rename to `{version}.apk`
+4. Execute `./asset.sh {version}`
 5. Use AssetStudio to export files as below
-6. Execute `./build.sh`
+6. Execute `./build.sh {version}`
 7. Release your generated website.
 
 ### Longyuan Version / 龙渊版
@@ -41,9 +41,9 @@ It can be accomplished easily with tools here.
 **注意：龙渊对某些版本进行了加密，本自动化处理程序将无法支持，请自行解决资源提取问题**
 
 1. 用 `git` 克隆本项目
-2. 将游戏资源导出至计算机中（未加密版本可使用 `./china.sh` ）
+2. 将游戏资源导出至计算机中（未加密版本可使用 `./china.sh {version}` ）
 3. 按照下方说明使用 AssetStudio 导出文件
-4. 运行 `./build.sh`
+4. 运行 `./build.sh {version}`
 5. 发布你编译的网页
 
 ## Export Instruction
@@ -63,7 +63,10 @@ It can be accomplished easily with tools here.
 
 ## Deploy To Github Pages
 
-Clone your repo to `./dist` and execute `./deploy.sh`
+Make sure you had added your ssh keys to your Github account.
+
+1. Configure your git info in `./deploy.sh`
+2. Execute `./deploy.sh {git_repo}`
 
 ## Announcement
 

@@ -27,10 +27,10 @@ mkdir ./res/export/images/characters
 echo "Cleaned cache."
 
 # unzip files
-unzip -q ./raw/cytus.apk -d ./res/apk
+unzip -q "./raw/$1.apk" -d ./res/apk
 echo "Unziped APK."
 
-unzip -q ./raw/cytus.obb -d ./res/obb
+unzip -q "./raw/$1.obb" -d ./res/obb
 echo "Unziped OBB."
 
 # move unity

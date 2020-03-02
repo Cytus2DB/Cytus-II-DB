@@ -9,7 +9,7 @@ username  = "A.R.C"
 useremail = "admin@arc.co"
 
 # clone repo
-git clone -n $0 ./dist
+git clone -n $1 ./dist
 cp -r ./web/dist ./
 cd dist
 

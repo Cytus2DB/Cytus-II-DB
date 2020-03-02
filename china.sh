@@ -27,12 +27,13 @@ mkdir ./res/export/images/characters
 echo "Cleaned cache."
 
 # unzip files
-unzip -q ./raw/cytus.apk -d ./res/apk
+unzip -q "./raw/$1.apk" -d ./res/apk
 echo "Unziped APK."
 
 # version check
 if [ ! -d "./res/apk/assets/bin/" ];then
   echo "This APK is encrypted!"
+  rm -rf "./res/apk"
   exit
 fi
 
