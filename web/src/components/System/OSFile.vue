@@ -17,12 +17,12 @@
         }" />
       </div>
       <div class="audio" v-if="current().type==2||current().type==4">
-        <AudioPlayer theme="#2d303a" preload :music="{
+        <AudioPlayer theme="#2d303a" :audio="{
           pic: '@/assets/empty.png',
           src: filepath(),
           title: current().name,
           artist: this.$route.params.id,
-        }" />
+        }" preload />
       </div>
       <div class="image" v-if="current().type==3">
 
@@ -38,8 +38,8 @@ import Loading from '../Loading';
 
 import 'vue-dplayer/dist/vue-dplayer.css';
 
-//import AudioPlayer from 'vue-aplayer';
 //import VideoPlayer from 'vue-dplayer';
+//import AudioPlayer from '@moefe/vue-aplayer';
 
 export default {
   name: 'OSFile',

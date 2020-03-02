@@ -86,7 +86,7 @@ button {
 }
 
 .hidden {
-  display: none;
+  display: none!important;
 }
 
 #app {

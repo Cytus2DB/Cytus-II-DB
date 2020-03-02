@@ -357,6 +357,7 @@ def loadOS():
                 "time": time,
                 "name": i["Names"][0],
                 "folder": chara,
+                "version": VERSION,
             })
         oslist[chara] = {"name": cnames[chara], "files": files}
         saveCache('data', 'os_%s' % chara, cache)

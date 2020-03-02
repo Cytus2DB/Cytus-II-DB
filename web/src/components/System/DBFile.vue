@@ -20,12 +20,12 @@
           }" />
         </div>
         <div class="audio" v-if="current().type==2||current().type==4">
-          <AudioPlayer theme="#2d303a" preload :music="{
+          <AudioPlayer theme="#2d303a" :audio="{
             pic: '@/assets/empty.png',
             src: filepath(),
             title: current().name,
             artist: this.$route.params.id,
-          }" />
+          }" preload />
         </div>
         <div class="image" v-if="current().type==3">
           <!-- TODO -->
@@ -41,8 +41,8 @@ import Loading from '../Loading';
 
 import 'vue-dplayer/dist/vue-dplayer.css';
 
-import AudioPlayer from 'vue-aplayer';
 import VideoPlayer from 'vue-dplayer';
+import AudioPlayer from '@moefe/vue-aplayer';
 
 export default {
   name: 'DBFile',
@@ -77,7 +77,7 @@ export default {
         case 2:
           return `./audios/story/${this.$route.params.id}.mp3`;
         case 3:
-          return '';
+          return ``;
         case 4:
           return `${this.current().location}/${this.$route.params.id}.mp3`;
         case 5:

@@ -59,23 +59,27 @@
         :items="[{
           id: 'header.display.character',
           title: $t('header.display.character'),
-          onclick: ()=>{this.$router.push({
-            hash: this.$route.hash,
-            query: {
-              ...this.$route.query,
-              view: 'character',
-            }
-          })}
+          onclick: ()=>{
+            if (this.$route.query.view != 'character') this.$router.push({
+              hash: this.$route.hash,
+              query: {
+                ...this.$route.query,
+                view: 'character',
+              }
+            })
+          }
         }, {
           id: 'header.display.timeline',
           title: $t('header.display.timeline'),
-          onclick: ()=>{this.$router.push({
-            hash: this.$route.hash,
-            query: {
-              ...this.$route.query,
-              view: 'timeline',
-            }
-          })}
+          onclick: ()=>{
+            if (this.$route.query.view != 'timeline') this.$router.push({
+              hash: this.$route.hash,
+              query: {
+                ...this.$route.query,
+                view: 'timeline',
+              }
+            })
+          }
         }]" />
       <Options v-if="
           $route.matched[0] && (

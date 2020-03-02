@@ -1,8 +1,12 @@
 <template>
   <div class="folder">
     <div class="title" @click="()=>{hidden = !hidden;}">
-      <img src="@/assets/btn-drop.svg" alt="dropdown">
-      {{name}}
+      <div class="icon">
+        <img src="@/assets/btn-drop.svg" alt="dropdown">
+      </div>
+      <div class="name">
+        {{name}}
+      </div>
     </div>
     <router-link tag="div" class="item" v-for="(file, id) in files" :key="id"
       :class="{
@@ -10,13 +14,18 @@
         new: file.version==$route.query.v,
       }"
       :to="{
-        path: `${$route.matched[0].path}/${uuid}/${id}`,
+        path: `${$route.matched[0].path}/${file.folder||uuid}/${file.folder?file.id:id}`,
         query: {
           ...$route.query,
           hide: isMobile()?'true':$route.query.hide
         }
       }" append>
-      {{file.name}}
+      <div class="icon" v-if="file.folder">
+        <img :src="`./images/characters/${file.folder}_s.png`" :alt="file.folder">
+      </div>
+      <div class="name">
+        {{file.name}}
+      </div>
     </router-link>
   </div>
 </template>
@@ -44,20 +53,28 @@ export default {
   cursor: pointer;
   user-select: none;
   word-break: break-all;
+  .icon {
+    width: 26px;
+    display: flex;
+    justify-content: center;
+  }
   .title {
     display: flex;
     padding: 3.2px 6.4px;
     align-items: center;
     background: #ffffff08;
-    img {
+    .icon img {
       height: .8em;
-      padding-right: 6.4px;
     }
   }
   .item {
-    padding: 3.2px 6.4px;
+    display: flex;
     margin-bottom: 1px;
+    padding: 3.2px 6.4px;
     background: #ffffff10;
+    .icon img {
+      height: 1em;
+    }
   }
   .router-link-active {
     color: yellow;

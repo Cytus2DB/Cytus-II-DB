@@ -14,7 +14,7 @@
       <template v-if="$route.query.view=='timeline'">
         <Folder key="timeline" uuid="timeline"
           :name="$t('header.display.timeline')"
-          :files="timeline"/>
+          :files="ostime"/>
       </template>
     </div>
     <router-view/>
@@ -34,7 +34,7 @@ export default {
       error: null,
       loading: null,
       oslist: null,
-      timeline: null
+      ostime: null
     };
   },
   components: {
@@ -47,8 +47,16 @@ export default {
   },
   methods: {
     fetchData() {
-      this.error = this.dblist = null;
+      this.error = this.oslist = this.ostime = null;
       this.loading = true;
+      fetch("./data/ostime.json").then(res => {
+        this.loading = false;
+        if (res.ok) res.json().then(data=>{
+          this.ostime = data;
+        }); else {
+          this.error = res.status+' '+res.statusText;
+        }
+      });
       fetch("./data/oslist.json").then(res => {
         this.loading = false;
         if (res.ok) res.json().then(data=>{
