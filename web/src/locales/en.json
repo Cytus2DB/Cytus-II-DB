@@ -1,4 +1,5 @@
 {
+	"404": "Sorry, the page you requested does not exist.",
 	"code": "0",
 	"db": {
 		"download": "Download",
@@ -21,8 +22,9 @@
 		"text": {
 			"line1": "Hello, Ivy, Welcome to the Cytus II DB Knowledge Base built by A.R.C.",
 			"line2": "This knowledge base is for testing, research, and learning purposes only, and many features are yet to be improved",
-			"line3": "Donate here to support this database",
-			"line4": "Please select the module you want to use below"
+			"line3": "This knowledge base is open source. Git repository",
+			"line4": "Donate here to support this database",
+			"line5": "Please select the module you want to use below"
 		}
 	},
 	"login": {

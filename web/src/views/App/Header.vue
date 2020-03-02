@@ -111,8 +111,14 @@ export default {
   },
   methods: {
     setLocale(locale) {
-      localStorage.setItem('locale', locale);
-      this.$i18n.locale = locale;
+      if (this.$i18n.locale != locale){
+        localStorage.setItem('locale', locale);
+        this.$i18n.locale = locale;
+        this.$router.push({
+          hash: this.$route.hash,
+          query: {...this.$route.query, t: Date.now()}
+        });
+      }
     },
     reverse(val) {
       return ( val==null || val==='false' ).toString()

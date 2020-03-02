@@ -74,7 +74,7 @@ button {
   background: none;
 }
 
-.im, .os, .db, .home {
+.im, .os, .db, .home, .not-found {
   height: calc(75vh - 2em);
   @media screen and (max-width: 767px) {
     height: calc(95vh - 2em);
@@ -84,7 +84,9 @@ button {
 .new {
   color: lime;
 }
-
+.full {
+  width: 100%!important;
+}
 .hidden {
   display: none!important;
 }

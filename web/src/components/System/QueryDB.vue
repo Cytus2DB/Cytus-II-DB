@@ -1,5 +1,5 @@
 <template>
-  <div class="view">
+  <div class="view" :class="{full: $route.query.hide=='true'}">
     <Error v-if="error" :error="error"/>
     <Loading v-if="loading"/>
     <template v-if="!loading&&$route.params.folder">
@@ -15,12 +15,11 @@
             },
             subtitle: {
               url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
-            },
-            autoplay: false
+            }
           }" />
         </div>
         <div class="audio" v-if="current().type==2||current().type==4">
-          <AudioPlayer theme="#2d303a" :audio="{
+          <AudioPlayer theme="#2d303a" :music="{
             pic: '@/assets/empty.png',
             src: filepath(),
             title: current().name,
@@ -42,10 +41,10 @@ import Loading from '../Loading';
 import 'vue-dplayer/dist/vue-dplayer.css';
 
 import VideoPlayer from 'vue-dplayer';
-import AudioPlayer from '@moefe/vue-aplayer';
+import AudioPlayer from 'vue-aplayer';
 
 export default {
-  name: 'DBFile',
+  name: 'QueryDB',
   data() {
     return {
       error: null,
@@ -56,8 +55,8 @@ export default {
   components: {
     Error,
     Loading,
-    AudioPlayer,
     VideoPlayer,
+    AudioPlayer,
   },
   created () {
     this.fetchData()
@@ -107,7 +106,7 @@ export default {
 .view {
   width: calc(80vw - 300px);
   @media screen and (max-width: 767px) {
-    width: calc(100vw - 300px);
+    width: calc(100vw);
   }
   height: 100%;
   padding: 16px;
@@ -121,7 +120,7 @@ export default {
   .loading {
     width: calc(80vw - 332px);
     @media screen and (max-width: 767px) {
-      width: calc(100vw - 332px);
+      width: calc(100vw);
     }
   }
   .aplayer {

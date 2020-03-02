@@ -1,33 +1,34 @@
 <template>
-  <div class="view">
+  <div class="view" :class="{full: $route.query.hide=='true'}">
     <Error v-if="error" :error="error"/>
     <Loading v-if="loading"/>
 
     <div class="content" v-if="!loading&&$route.params.folder">
-      <!--
-      <div class="video" v-if="current().type==1||current().type==5">
+      <div class="video" v-if="osfile.res">
         <VideoPlayer :options="{
           video: {
-            url: filepath()
+            url: `./videos/${osfile.res.toLowerCase()}`
           },
           subtitle: {
-            url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
+            url: `./data/subtitles/${osfile.res.split('.')[0].toLowerCase()}_${$i18n.locale}.vtt`
           },
           autoplay: false
         }" />
       </div>
-      <div class="audio" v-if="current().type==2||current().type==4">
-        <AudioPlayer theme="#2d303a" :audio="{
-          pic: '@/assets/empty.png',
-          src: filepath(),
-          title: current().name,
-          artist: this.$route.params.id,
-        }" preload />
-      </div>
-      <div class="image" v-if="current().type==3">
+      <div v-for="(content, index) in osfile.contents[parseInt($t('code'))]"
+        :key="`${$route.params.id}_${$i18n.locale}_${index}`">
+        <div class="audio" v-if="content.type=='bgm'">
+          <AudioPlayer theme="#2d303a" :music="{
+            pic: '@/assets/empty.png',
+            src: `./audios/bgms/${content.attrs[0].toLowerCase()}.mp3`,
+            title: $t('os.bgm'),
+            artist: content.attrs[0],
+          }" preload />
+        </div>
+        <div class="image" v-if="content.type=='bgm'">
 
+        </div>
       </div>
-      -->
     </div>
   </div>
 </template>
@@ -38,23 +39,25 @@ import Loading from '../Loading';
 
 import 'vue-dplayer/dist/vue-dplayer.css';
 
-//import VideoPlayer from 'vue-dplayer';
-//import AudioPlayer from '@moefe/vue-aplayer';
+import VideoPlayer from 'vue-dplayer';
+import AudioPlayer from 'vue-aplayer';
 
 export default {
-  name: 'OSFile',
+  name: 'QueryOS',
   data() {
     return {
       error: null,
       loading: null,
-      osfile: null,
+      osfile: {
+        contents: []
+      },
     };
   },
   components: {
     Error,
     Loading,
-    //AudioPlayer,
-    //VideoPlayer,
+    AudioPlayer,
+    VideoPlayer,
   },
   created () {
     this.fetchData()
@@ -65,7 +68,10 @@ export default {
   methods: {
     fetchData() {
       if (!this.$route.params.folder) return;
-      this.error = this.osfile = null;
+      this.osfile = {
+        contents: []
+      };
+      this.error = null;
       this.loading = true;
       fetch(`./data/osfiles/${this.$route.params.folder}/${this.$route.params.id}.json`).then(res => {
         this.loading = false;
@@ -84,7 +90,7 @@ export default {
 .view {
   width: calc(80vw - 300px);
   @media screen and (max-width: 767px) {
-    width: calc(100vw - 300px);
+    width: calc(100vw);
   }
   height: 100%;
   padding: 16px;
@@ -98,7 +104,7 @@ export default {
   .loading {
     width: calc(80vw - 332px);
     @media screen and (max-width: 767px) {
-      width: calc(100vw - 332px);
+      width: calc(100vw);
     }
   }
   .aplayer {

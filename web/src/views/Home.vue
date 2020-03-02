@@ -11,11 +11,15 @@
       <p>{{$t("home.text.line2")}}</p>
       <p>{{$t("home.text.line3")}}:</p>
       <p>
-        <a href="https://afdian.net/@dtsdao">afdian</a>
-        &nbsp; / &nbsp;
-        <a href="https://www.patreon.com/dtsdao">Patreon</a>
+        <a href="https://github.com/cytus2db/Cytus-II-DB" target="_blank">Github</a>
       </p>
-      <p>{{$t("home.text.line4")}}</p>
+      <p>{{$t("home.text.line4")}}:</p>
+      <p>
+        <a href="https://afdian.net/@dtsdao" target="_blank">爱发电</a>
+        &nbsp; / &nbsp;
+        <a href="https://www.patreon.com/dtsdao" target="_blank">Patreon</a>
+      </p>
+      <p>{{$t("home.text.line5")}}</p>
     </div>
     <div class="buttons">
       <router-link class="button" to="/im">
@@ -55,7 +59,7 @@ export default {
     padding-top: 12px;
   }
   .body p {
-    margin: 12px 0px;
+    margin: 16px 0px;
   }
   .buttons {
     width: 100%;

@@ -2,7 +2,7 @@
 
 Knowledge database maintained by A.R.C.
 
-Donate [here](https://afdian.net/@dtsdao).
+Donate: [爱发电](https://afdian.net/@dtsdao) / [Patreon](https://www.patreon.com/dtsdao).
 
 ## Requirements
 
