@@ -13,7 +13,7 @@
         <img
           :src="`./images/imfiles/${item.toLowerCase()}.jpg`"
           :alt="item"
-          @click="viewImage(item.toLowerCase())">
+          @click="viewImage(`./images/imfiles/${item.toLowerCase()}.jpg`)">
       </div>
     </div>
   </div>
@@ -24,8 +24,8 @@ export default {
   name: 'PostView',
   props: ['avatar', 'name', 'pid', 'title', 'text', 'attachments'],
   methods: {
-    viewImage(id) {
-      window.open(`./images/imfiles/${id}.jpg`);
+    viewImage(url) {
+      window.open(url);
     }
   }
 }

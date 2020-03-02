@@ -40,7 +40,7 @@
         </div>
         <div class="image" v-if="item.type=='image'">
           <img :alt="item.attrs[0]" :src="`./images/osfiles/${item.attrs[0].toLowerCase()}.jpg`"
-            @click="()=>window.open(`./images/osfiles/${item.attrs[0].toLowerCase()}.jpg`)">
+            @click="()=>viewImage(`./images/osfiles/${item.attrs[0].toLowerCase()}.jpg`)">
         </div>
         <JsonObject v-if="item.type=='json'" :raw="item"/>
         <MailObject v-if="item.type=='mail'"
@@ -96,6 +96,9 @@ export default {
     '$route': 'fetchData'
   },
   methods: {
+    viewImage(url) {
+      window.open(url);
+    },
     fetchData() {
       if (!this.$route.params.folder) return;
       this.osfile = {

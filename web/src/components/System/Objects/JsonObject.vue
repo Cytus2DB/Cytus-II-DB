@@ -25,13 +25,13 @@
     <div class="image" v-if="file.type===1">
       <img :alt="file.data.Image"
         :src="`./images/osspecial/${file.data.Image.toLowerCase()}.jpg`"
-        @click="()=>window.open(`./images/osspecial/${file.data.Image.toLowerCase()}.jpg`)">
+        @click="()=>viewImage(`./images/osspecial/${file.data.Image.toLowerCase()}.jpg`)">
     </div>
     <template v-if="file.type===2">
       <div class="image" v-for="item in file.data" :key="item.Id">
         <img :alt="item.Id"
           :src="`./images/osspecial/${item.Id.toLowerCase()}.jpg`"
-          @click="()=>window.open(`./images/osspecial/${item.Id.toLowerCase()}.jpg`)">
+          @click="()=>viewImage(`./images/osspecial/${item.Id.toLowerCase()}.jpg`)">
       </div>
     </template>
   </div>
@@ -64,6 +64,11 @@ export default {
           console.log(this.raw.content);
           return {};
       }
+    }
+  },
+  methods: {
+    viewImage(url) {
+      window.open(url);
     }
   }
 }

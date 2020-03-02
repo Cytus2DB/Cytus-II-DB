@@ -28,7 +28,7 @@
         </div>
         <div class="image" v-if="current().type==3">
           <img :alt="$route.params.id" :src="`./images/gallery/${$route.params.id}.jpg`"
-            @click="()=>window.open(`./images/gallery/${$route.params.id}.jpg`)">
+            @click="viewImage(`./images/gallery/${$route.params.id}.jpg`)">
         </div>
       </div>
     </template>
@@ -66,6 +66,9 @@ export default {
     '$route': 'fetchData'
   },
   methods: {
+    viewImage(url) {
+      window.open(url);
+    },
     current() {
       if (!this.dblist) return {};
       return this.dblist[this.$route.params.folder].files[this.$route.params.id];
@@ -130,6 +133,9 @@ export default {
     aplyer-icon:hover {
       opacity: .2;
     }
+  }
+  .image img {
+    width: 100%;
   }
 }
 </style>
