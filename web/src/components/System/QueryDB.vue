@@ -23,11 +23,12 @@
             pic: '@/assets/empty.png',
             src: filepath(),
             title: current().name,
-            artist: this.$route.params.id,
+            artist: $route.params.id,
           }" preload/>
         </div>
         <div class="image" v-if="current().type==3">
-          <!-- TODO -->
+          <img :alt="$route.params.id" :src="`./images/gallery/${$route.params.id}.jpg`"
+            @click="()=>window.open(`./images/gallery/${$route.params.id}.jpg`)">
         </div>
       </div>
     </template>

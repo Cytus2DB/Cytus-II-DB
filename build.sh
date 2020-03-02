@@ -24,6 +24,7 @@ mkdir ./res/converted/audios/sounds
 mkdir ./res/converted/audios/story
 mkdir ./res/converted/audios/extra
 mkdir ./res/converted/images
+mkdir ./res/converted/images/gallery
 mkdir ./res/converted/images/imfiles
 mkdir ./res/converted/images/osfiles
 mkdir ./res/converted/images/imavatars

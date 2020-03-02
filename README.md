@@ -8,7 +8,7 @@ Donate: [爱发电](https://afdian.net/@dtsdao) / [Patreon](https://www.patreon.
 
 This program can be executed on Linux/Windows/macOS.
 
-You must have at least 2 GB free space on your current disk.
+You must have at least 5 GB free space on your current disk.
 
 Make sure you have installed these softwares on your PC:
 
@@ -56,11 +56,11 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 
 ## Export Instruction
 
-1.  Load folder `./res/unitybundles`
-2.  Enable `Options > Display all assets`
-3.  Enable `Options > Display asset original name`
-4.  Enable `Options > Do not group`
-5.  Enable `Options > Export options > Convert Texture2D(PNG)`
+1.  Enable `Options > Display all assets`
+2.  Enable `Options > Display asset original name`
+3.  Enable `Options > Do not group`
+4.  Enable `Options > Export options > Convert Texture2D(PNG)`
+5.  Load folder `./res/unitybundles`
 6.  Filter `AudioClip`, `TextAsset`, `Sprite`
 7.  `Export > Filtered assets` to `./res/export`
 8.  Restart(close&open) AssetStudio 

@@ -7,8 +7,8 @@ echo "================================="
 
 rm -rf ./res/*/
 rm -rf ./res/cache*
-rm -rf ./web/.env
 rm -rf ./web/dist
 rm -rf ./web/public/*/
+rm -rf ./web/version.json
 
 echo "Cache Cleaned."

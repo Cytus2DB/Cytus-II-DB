@@ -92,8 +92,23 @@ def do_avatars():
     saveCache('image', 'avatars', cache)
     print("Finished Avatars.")
 
+def do_gallery():
+    cache = loadCache('image', 'gallery')
+    folder = './res/export/assets/game/17_gallery/bundleassets/imageviewer'
+    for chara in getJson(BASEDATA+"/gallerydata/folder.txt"):
+        for gfile in getJson(BASEDATA+"/gallerydata/%s.txt" % chara["Id"]):
+            if gfile["FileLocation"] in cache:
+                continue
+            if gfile["Format"] == 3:
+                sz = gfile["Location"].split(",")
+                im = Image.open(folder+'/'+gfile["FileLocation"]+'.png')
+                im = im.resize((int(sz[0]), int(sz[1])))
+                im.convert('RGB').save('./res/converted/images/gallery/%s.jpg'%gfile["FileLocation"])
+                cache.append(gfile["FileLocation"])
+    saveCache('image', 'gallery', cache)
+
 def do_imageviewer():
-    cache = loadCache('image', 'imageviewer')
+    cache = loadCache('image', 'osspecial')
     folder = BASEOS+'/osimageviewer'
     for i in os.listdir(folder):
         fid = i.split('_')[0]
@@ -113,7 +128,7 @@ def do_imageviewer():
         im.convert('RGB').save(ofn)
         # add cache
         cache.append(ofn)
-    saveCache('image', 'imageviewer', cache)
+    saveCache('image', 'osspecial', cache)
     print("Finished Imageviewer.")
 
 '''
@@ -364,7 +379,7 @@ def loadOS():
                 "time": time,
                 "name": i["Names"][0],
                 "folder": chara,
-                "version": VERSION,
+                "version": 1,
             })
         oslist[chara] = {"name": cnames[chara], "files": files}
         saveCache('data', 'os_%s' % chara, cache)
@@ -438,18 +453,19 @@ def main():
         return
     versions.append(VERSION)
     putJson('./web/version.json', {"version": VERSION})
-    # assets
-    do_avatars()
-    do_imageviewer()
-    do_attachments('11_im')
-    do_attachments('15_os')
-    do_music()
-    do_srt()
     # data
     loadChara()
     loadIM()
     loadDB()
     loadOS()
+    # assets
+    do_srt()
+    do_avatars()
+    do_gallery()
+    do_imageviewer()
+    do_attachments('11_im')
+    do_attachments('15_os')
+    do_music()
     putJson('./res/converted/data/versions.json', versions)
     # fin
     print("Finished.")
