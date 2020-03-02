@@ -10,7 +10,7 @@ rm -rf ./res/export/*
 rm -rf ./res/unitydata/*
 rm -rf ./res/unitybundles/*
 
-if [!$1] then
+if [ ! $1 ] then
   echo "Version not defined!"
   exit
 fi
