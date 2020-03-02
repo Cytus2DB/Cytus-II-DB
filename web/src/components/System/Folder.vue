@@ -33,10 +33,10 @@
 <script>
 export default {
   name: 'Folder',
-  props: ['uuid', 'name', 'files'],
+  props: ['uuid', 'name', 'files', 'opened'],
   data() {
     return {
-      hidden: true
+      hidden: !this.opened
     };
   },
   methods: {

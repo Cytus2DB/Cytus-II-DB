@@ -14,7 +14,8 @@
       <template v-if="$route.query.view=='timeline'">
         <Folder key="timeline" uuid="timeline"
           :name="$t('header.display.timeline')"
-          :files="ostime"/>
+          :files="ostime"
+          :opened="true"/>
       </template>
     </div>
     <router-view/>
