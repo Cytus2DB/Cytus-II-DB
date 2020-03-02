@@ -1,3 +1,5 @@
+process.env.VUE_APP_VERSION = require('../version.json').version
+
 module.exports = {
   chainWebpack: config => {
     config.plugin('html').tap(options => {

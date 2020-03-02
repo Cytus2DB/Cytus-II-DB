@@ -15,14 +15,17 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159441633-1"></script>
     <script>
+      // Global site tag (gtag.js) - Google Analytics
+      const gid = (location.hostname=='cytus2db.gitee.io')?'UA-159441633-2':'UA-159441633-1';
+      const gscript = document.createElement("script");
+      gscript.src = `https://www.googletagmanager.com/gtag/js?id=${gid}`;
+      document.body.appendChild(gscript);
+      // gtag static
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
-      gtag('config', 'UA-159441633-1');
+      gtag('config', gid);
     </script>
   </body>
 </html>

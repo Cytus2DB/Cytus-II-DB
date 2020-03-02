@@ -160,7 +160,7 @@ def do_srt():
     srtlangs  = [("en","en"),("ja","ja"),("zh","zh"),("ko","ko"),("zh","zh-TW"),("cn","zh-CN")]
     for lang in srtlangs:
         for i in os.listdir('./res/export/videos'):
-            if i.split('.')[1] == 'mp4':
+            if '.mp4' in i:
                 with open(
                  './res/converted/data/subtitles/%s_%s.vtt' % (i.split('.')[0], lang[1]), 'w'
                 ) as f:
@@ -437,8 +437,7 @@ def main():
         print("Notice: v%s exists" % VERSION)
         return
     versions.append(VERSION)
-    with open('./web/.env', 'w') as f:
-        f.write("VERSION=%s" % VERSION)
+    putJson('./web/version.json', {"version": VERSION})
     # assets
     do_avatars()
     do_imageviewer()
