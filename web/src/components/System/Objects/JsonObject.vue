@@ -87,6 +87,10 @@ export default {
       display: block;
       font-size: 0.9em;
       text-align: center;
+      .text {
+        border: none;
+        background: none;
+      }
     }
     .self {
       display: flex;
@@ -112,6 +116,7 @@ export default {
     .text {
       padding: 16px;
       font-size: 1.2em;
+      border-radius: 32px;
       white-space: pre-line;
       background: #ffffff10;
     }
