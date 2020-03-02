@@ -8,6 +8,11 @@ echo "================================="
 # clean build
 rm -rf ./web/public/data ./web/public/audios ./web/public/images ./web/public/videos
 
+if [!$1] then
+  echo "Version not defined!"
+  exit
+fi
+
 mkdir ./res/converted
 mkdir ./res/converted/data
 mkdir ./res/converted/data/imposts

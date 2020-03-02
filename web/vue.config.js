@@ -1,4 +1,5 @@
-process.env.VUE_APP_VERSION = require('../version.json').version
+// set version
+process.env.VUE_APP_VERSION = require('./version.json').version
 
 module.exports = {
   chainWebpack: config => {

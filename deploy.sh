@@ -8,6 +8,11 @@ echo "================================="
 username  = "A.R.C"
 useremail = "admin@arc.co"
 
+if [!$1] then
+  echo "Git repo not defined!"
+  exit
+fi
+
 # clone repo
 git clone -n $1 ./dist
 cp -r ./web/dist ./
