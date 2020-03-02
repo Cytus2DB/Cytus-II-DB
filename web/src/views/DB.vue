@@ -57,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .db {
   .sidebar {
-    width: 256px;
+    width: 300px;
     height: 100%;
     font-size: 1.2em;
     overflow-x: hidden;

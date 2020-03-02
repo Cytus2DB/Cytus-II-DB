@@ -38,7 +38,7 @@ const routes = [
     children: [{
       name: 'OS Query',
       path: ':folder/:id',
-      component: () => import(/* webpackChunkName: "os" */ '@/components/System/DBFile.vue'),
+      component: () => import(/* webpackChunkName: "os" */ '@/components/System/OSFile.vue'),
     }]
   },
   {

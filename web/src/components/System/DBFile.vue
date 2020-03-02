@@ -1,45 +1,45 @@
 <template>
   <div class="view">
-    <div class="content">
-      <Error v-if="error" :error="error"/>
-      <Loading v-if="loading"/>
-      <template v-if="!loading&&$route.params.folder">
-        <div class="info">
-          {{$t('db.filename')}}: {{current().name}}<br>
-          <a target="_blank" :href="filepath()">{{$t('db.download')}}</a>
+    <Error v-if="error" :error="error"/>
+    <Loading v-if="loading"/>
+    <template v-if="!loading&&$route.params.folder">
+      <div class="info">
+        {{$t('db.filename')}}: {{current().name}}<br>
+        <a target="_blank" :href="filepath()">{{$t('db.download')}}</a>
+      </div>
+      <div class="content">
+        <div class="video" v-if="current().type==1||current().type==5">
+          <VideoPlayer :options="{
+            video: {
+              url: filepath()
+            },
+            subtitle: {
+              url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
+            },
+            autoplay: false
+          }" />
         </div>
-        <div class="content">
-          <div class="video" v-if="current().type==1||current().type==5">
-            <VideoPlayer :options="{
-              video: {
-                url: filepath()
-              },
-              subtitle: {
-                url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
-              },
-              autoplay: false
-            }" />
-          </div>
-          <div class="audio" v-if="current().type==2||current().type==4">
-            <AudioPlayer theme="#2d303a" preload :music="{
-              pic: '@/assets/empty.png',
-              src: filepath(),
-              title: current().name,
-              artist: this.$route.params.id,
-            }" />
-          </div>
-          <div class="image" v-if="current().type==3">
-
-          </div>
+        <div class="audio" v-if="current().type==2||current().type==4">
+          <AudioPlayer theme="#2d303a" preload :music="{
+            pic: '@/assets/empty.png',
+            src: filepath(),
+            title: current().name,
+            artist: this.$route.params.id,
+          }" />
         </div>
-      </template>
-    </div>
+        <div class="image" v-if="current().type==3">
+          <!-- TODO -->
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import Error from '../Error';
 import Loading from '../Loading';
+
+import 'vue-dplayer/dist/vue-dplayer.css';
 
 import AudioPlayer from 'vue-aplayer';
 import VideoPlayer from 'vue-dplayer';
@@ -87,6 +87,7 @@ export default {
       }
     },
     fetchData() {
+      if (!this.$route.params.folder) return;
       this.error = this.dblist = null;
       this.loading = true;
       fetch("./data/dblist.json").then(res => {
@@ -104,9 +105,9 @@ export default {
 
 <style lang="scss" scoped>
 .view {
-  width: calc(80vw - 256px);
+  width: calc(80vw - 300px);
   @media screen and (max-width: 767px) {
-    width: calc(100vw - 256px);
+    width: calc(100vw - 300px);
   }
   height: 100%;
   padding: 16px;
@@ -116,6 +117,12 @@ export default {
   box-sizing: border-box;
   .info {
     margin-bottom: 16px;
+  }
+  .loading {
+    width: calc(80vw - 332px);
+    @media screen and (max-width: 767px) {
+      width: calc(100vw - 332px);
+    }
   }
   .aplayer {
     color: #fff;

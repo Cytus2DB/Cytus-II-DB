@@ -54,7 +54,7 @@
           title: '中文<简体>',
           onclick: ()=>setLocale('zh-CN')
         }]" />
-      <Options v-if="$route.name=='OS'"
+      <Options v-if="$route.matched[0]&&$route.matched[0].path=='/os'"
         :title="$t('header.display.title')"
         :items="[{
           id: 'header.display.character',

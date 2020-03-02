@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="loading">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
       <g transform="rotate(0 50 50)">
         <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#727a7e">
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
+.loading {
   position: absolute;
   text-align: center;
   width: 100%;

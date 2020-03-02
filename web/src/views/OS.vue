@@ -4,11 +4,18 @@
     <Loading v-if="loading"/>
 
     <div class="sidebar" :class="{ hidden:($route.query.hide==='true') }">
-      <Folder v-for="(info, uuid) in dblist"
-        :key="uuid"
-        :uuid="uuid"
-        :name="info.name"
-        :files="info.files"/>
+      <template v-if="$route.query.view!='timeline'">
+        <Folder v-for="(info, uuid) in oslist"
+          :key="uuid"
+          :uuid="uuid"
+          :name="info.name"
+          :files="info.files"/>
+      </template>
+      <template v-if="$route.query.view=='timeline'">
+        <Folder key="timeline" uuid="timeline"
+          :name="$t('header.display.timeline')"
+          :files="timeline"/>
+      </template>
     </div>
     <router-view/>
   </div>
@@ -26,7 +33,8 @@ export default {
     return {
       error: null,
       loading: null,
-      dblist: null,
+      oslist: null,
+      timeline: null
     };
   },
   components: {
@@ -44,7 +52,7 @@ export default {
       fetch("./data/oslist.json").then(res => {
         this.loading = false;
         if (res.ok) res.json().then(data=>{
-          this.dblist = data;
+          this.oslist = data;
         }); else {
           this.error = res.status+' '+res.statusText;
         }
@@ -57,7 +65,7 @@ export default {
 <style lang="scss" scoped>
 .os {
   .sidebar {
-    width: 256px;
+    width: 300px;
     height: 100%;
     font-size: 1.2em;
     overflow-x: hidden;

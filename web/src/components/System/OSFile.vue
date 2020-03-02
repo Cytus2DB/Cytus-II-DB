@@ -1,38 +1,33 @@
 <template>
   <div class="view">
-    <div class="content">
-      <Error v-if="error" :error="error"/>
-      <Loading v-if="loading"/>
-      <template v-if="!loading&&$route.params.folder">
-        <div class="info">
-          {{$t('db.filename')}}: {{current().name}}<br>
-          <a target="_blank" :href="filepath()">{{$t('db.download')}}</a>
-        </div>
-        <div class="content">
-          <div class="video" v-if="current().type==1||current().type==5">
-            <VideoPlayer :options="{
-              video: {
-                url: filepath()
-              },
-              subtitle: {
-                url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
-              },
-              autoplay: false
-            }" />
-          </div>
-          <div class="audio" v-if="current().type==2||current().type==4">
-            <AudioPlayer theme="#2d303a" preload :music="{
-              pic: '@/assets/empty.png',
-              src: filepath(),
-              title: current().name,
-              artist: this.$route.params.id,
-            }" />
-          </div>
-          <div class="image" v-if="current().type==3">
+    <Error v-if="error" :error="error"/>
+    <Loading v-if="loading"/>
 
-          </div>
-        </div>
-      </template>
+    <div class="content" v-if="!loading&&$route.params.folder">
+      <!--
+      <div class="video" v-if="current().type==1||current().type==5">
+        <VideoPlayer :options="{
+          video: {
+            url: filepath()
+          },
+          subtitle: {
+            url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
+          },
+          autoplay: false
+        }" />
+      </div>
+      <div class="audio" v-if="current().type==2||current().type==4">
+        <AudioPlayer theme="#2d303a" preload :music="{
+          pic: '@/assets/empty.png',
+          src: filepath(),
+          title: current().name,
+          artist: this.$route.params.id,
+        }" />
+      </div>
+      <div class="image" v-if="current().type==3">
+
+      </div>
+      -->
     </div>
   </div>
 </template>
@@ -41,23 +36,25 @@
 import Error from '../Error';
 import Loading from '../Loading';
 
-import AudioPlayer from 'vue-aplayer';
-import VideoPlayer from 'vue-dplayer';
+import 'vue-dplayer/dist/vue-dplayer.css';
+
+//import AudioPlayer from 'vue-aplayer';
+//import VideoPlayer from 'vue-dplayer';
 
 export default {
-  name: 'DBFile',
+  name: 'OSFile',
   data() {
     return {
       error: null,
       loading: null,
-      dblist: null,
+      osfile: null,
     };
   },
   components: {
     Error,
     Loading,
-    AudioPlayer,
-    VideoPlayer,
+    //AudioPlayer,
+    //VideoPlayer,
   },
   created () {
     this.fetchData()
@@ -66,33 +63,14 @@ export default {
     '$route': 'fetchData'
   },
   methods: {
-    current() {
-      if (!this.dblist) return {};
-      return this.dblist[this.$route.params.folder].files[this.$route.params.id];
-    },
-    filepath() {
-      switch (this.current().type) {
-        case 1:
-          return `./videos/${this.$route.params.id}.mp4`;
-        case 2:
-          return `./audios/story/${this.$route.params.id}.mp3`;
-        case 3:
-          return '';
-        case 4:
-          return `${this.current().location}/${this.$route.params.id}.mp3`;
-        case 5:
-          return `${this.current().location}/${this.$route.params.id}.mp4`;
-        default:
-          return 0;
-      }
-    },
     fetchData() {
-      this.error = this.dblist = null;
+      if (!this.$route.params.folder) return;
+      this.error = this.osfile = null;
       this.loading = true;
-      fetch("./data/dblist.json").then(res => {
+      fetch(`./data/osfiles/${this.$route.params.folder}/${this.$route.params.id}.json`).then(res => {
         this.loading = false;
         if (res.ok) res.json().then(data=>{
-          this.dblist = data;
+          this.osfile = data;
         }); else {
           this.error = res.status+' '+res.statusText;
         }
@@ -104,9 +82,9 @@ export default {
 
 <style lang="scss" scoped>
 .view {
-  width: calc(80vw - 256px);
+  width: calc(80vw - 300px);
   @media screen and (max-width: 767px) {
-    width: calc(100vw - 256px);
+    width: calc(100vw - 300px);
   }
   height: 100%;
   padding: 16px;
@@ -116,6 +94,12 @@ export default {
   box-sizing: border-box;
   .info {
     margin-bottom: 16px;
+  }
+  .loading {
+    width: calc(80vw - 332px);
+    @media screen and (max-width: 767px) {
+      width: calc(100vw - 332px);
+    }
   }
   .aplayer {
     color: #fff;
