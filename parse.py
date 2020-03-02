@@ -4,9 +4,9 @@
 from PIL import Image
 from pydub import AudioSegment
 
-import os, re, json
+import os, re, sys, json
 
-VERSION = "2.8.0"
+VERSION = ""
 
 MAX_TIME = 900000000
 
@@ -457,4 +457,7 @@ def main():
 
 
 if __name__ == "__main__":
+    # define version
+    VERSION = sys.argv[0]
+    # run
     main()
