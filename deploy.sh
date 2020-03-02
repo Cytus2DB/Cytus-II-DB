@@ -5,14 +5,21 @@ echo "   Cytus II DB Build Tool V2.0   "
 echo "          A.R.C.  Tech.          "
 echo "================================="
 
-#TODO
-cd web
-npm run build
-cd ..
-cp -r ./web/build/* ./deploy
-rm -rf ./web/build
-cd deploy
-git add .
-git commit -m "`date "+[%Y-%m-%d %H:%M] release"`"
+username  = "A.R.C"
+useremail = "admin@arc.co"
+
+# clone repo
+git clone -n $0 ./dist
+cp -r ./web/dist ./
+cd dist
+
+# git config
+git config user.name $username
+git config user.email $useremail
+
+# release
+git add . && git commit -m "`date "+[%Y-%m-%d %H:%M] release"`"
 git push
-rm -rf `ls`
+
+# clean
+cd .. && rm -rf ./dist

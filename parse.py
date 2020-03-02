@@ -159,6 +159,13 @@ def do_srt():
     cache = loadCache('data', 'srt')
     srtlangs  = [("en","en"),("ja","ja"),("zh","zh"),("ko","ko"),("zh","zh-TW"),("cn","zh-CN")]
     for lang in srtlangs:
+        for i in os.listdir('./res/export/videos'):
+            if i.split('.')[1] == 'mp4':
+                with open(
+                 './res/converted/data/subtitles/%s_%s.vtt' % (i.split('.')[0], lang[1]), 'w'
+                ) as f:
+                    f.write('')
+    for lang in srtlangs:
         folder = './res/export/assets/game/common/bundleassets/srtfiles/%s' % lang[0]
         for i in os.listdir(folder):
             ifn = '%s/%s' % (folder, i)
