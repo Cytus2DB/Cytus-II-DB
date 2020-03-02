@@ -458,6 +458,6 @@ def main():
 
 if __name__ == "__main__":
     # define version
-    VERSION = sys.argv[0]
+    VERSION = sys.argv[1]
     # run
     main()
