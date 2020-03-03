@@ -46,15 +46,17 @@ fi
 python parse.py $1
 
 # build dist
-if [ $2 = "dist" ]; then
-  cp -r ./res/export/images ./web/public
-  cp -r ./res/export/videos ./web/public
-  cp -r ./res/converted/data ./web/public
-  cp -r ./res/converted/audios ./web/public
-  cp -r ./res/converted/images ./web/public
-
-  # raw assets
-  cp -r ./res/export/assets/game/15_os/bundleassets/osstickers ./web/public/images
-
-  cd ./web && npm i && npm run build
+if [ $2 != "dist" ]; then
+  exit
 fi
+
+cp -r ./res/export/images ./web/public
+cp -r ./res/export/videos ./web/public
+cp -r ./res/converted/data ./web/public
+cp -r ./res/converted/audios ./web/public
+cp -r ./res/converted/images ./web/public
+
+# raw assets
+cp -r ./res/export/assets/game/15_os/bundleassets/osstickers ./web/public/images
+
+cd ./web && npm i && npm run build
