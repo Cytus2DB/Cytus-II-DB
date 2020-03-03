@@ -20,7 +20,7 @@
         <div class="hint" v-if="item.type=='text'" v-html="item.content"/>
         <div class="audio" v-if="item.type=='bgm'">
           <AudioPlayer theme="#2d303a" :music="{
-            pic: '@/assets/empty.png',
+            pic: './empty.png',
             src: `./audios/bgms/${item.attrs[0].toLowerCase()}.mp3`,
             loop: 'one',
             mutex: false,
@@ -30,7 +30,7 @@
         </div>
         <div class="audio" v-if="item.type=='sound'">
           <AudioPlayer theme="#2d303a" :music="{
-            pic: '@/assets/empty.png',
+            pic: './empty.png',
             src: `./audios/sounds/${item.attrs[0].toLowerCase()}.mp3`,
             loop: 'none',
             mutex: false,

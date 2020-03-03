@@ -20,7 +20,7 @@
         </div>
         <div class="audio" v-if="current().type==2||current().type==4">
           <AudioPlayer theme="#2d303a" :music="{
-            pic: '@/assets/empty.png',
+            pic: './empty.png',
             src: filepath(),
             title: current().name,
             artist: $route.params.id,

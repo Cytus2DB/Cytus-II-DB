@@ -34,7 +34,8 @@ It can be accomplished easily with tools here.
 4. Execute `./asset.sh {version}`
 5. Use AssetStudio to export files as below
 6. Execute `./build.sh {version}`
-7. Release your generated website.
+
+If you want to release your generated website at current version, just add `dist` after the 6th step.
 
 ### Longyuan Version / 龙渊版
 
@@ -44,7 +45,8 @@ It can be accomplished easily with tools here.
 2. 将游戏资源导出至计算机中（未加密版本可使用 `./china.sh {version}` ）
 3. 按照下方说明使用 AssetStudio 导出文件
 4. 运行 `./build.sh {version}`
-5. 发布你编译的网页
+
+如果希望生成这个版本的发布版，请在第4步后添加 `dist`。
 
 ## Clean
 
@@ -73,8 +75,7 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 
 Make sure you had added your ssh keys to your Github account.
 
-1. Configure your git info in `./deploy.sh`
-2. Execute `./deploy.sh {git_repo}`
+To deploy, configure your git info in `./deploy.sh` and execute it.
 
 ## Announcement
 

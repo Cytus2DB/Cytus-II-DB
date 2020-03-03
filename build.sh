@@ -44,4 +44,9 @@ cp -r ./res/converted/images ./web/public
 # raw assets
 cp -r ./res/export/assets/game/15_os/bundleassets/osstickers ./web/public/images
 
+if [ ! $2 ]; then
+  echo "Website was built."
+  exit
+fi
+
 cd ./web && npm i && npm run build

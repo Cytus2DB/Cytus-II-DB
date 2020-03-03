@@ -5,26 +5,29 @@ echo "   Cytus II DB Build Tool V2.0   "
 echo "          A.R.C.  Tech.          "
 echo "================================="
 
-username  = "A.R.C"
-useremail = "admin@arc.co"
-
-if [ ! $1 ]; then
-  echo "Git repo not defined!"
-  exit
+if [ ! -f "dist.zip" ]; then
+  if [ ! $1 ]; then
+    echo "Git repo not defined!"
+    exit
+  fi
+  # clone repo
+  git clone -n $1 ./dist
+  cp -r ./web/dist ./
+  cd dist
+  # git config
+  git config user.name "A.R.C"
+  git config user.email "admin@arc.co"
+else
+  unzip dist.zip
+  cd dist
 fi
-
-# clone repo
-git clone -n $1 ./dist
-cp -r ./web/dist ./
-cd dist
-
-# git config
-git config user.name $username
-git config user.email $useremail
 
 # release
 git add . && git commit -m "`date "+[%Y-%m-%d %H:%M] release"`"
 git push
 
+# optimize
+rm -rf ./*
+
 # clean
-cd .. && rm -rf ./dist
+cd .. && zip -r dist.zip ./dist && rm -rf ./dist

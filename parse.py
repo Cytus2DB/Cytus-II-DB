@@ -173,13 +173,7 @@ def srt2vtt(ifn, ofn):
 def do_srt():
     cache = loadCache('data', 'srt')
     srtlangs  = [("en","en"),("ja","ja"),("zh","zh"),("ko","ko"),("zh","zh-TW"),("cn","zh-CN")]
-    for lang in srtlangs:
-        for i in os.listdir('./res/export/videos'):
-            if '.mp4' in i:
-                with open(
-                 './res/converted/data/subtitles/%s_%s.vtt' % (i.split('.')[0], lang[1]), 'w'
-                ) as f:
-                    f.write('')
+    # srt2vtt
     for lang in srtlangs:
         folder = './res/export/assets/game/common/bundleassets/srtfiles/%s' % lang[0]
         for i in os.listdir(folder):
@@ -192,6 +186,14 @@ def do_srt():
             # add cache
             cache.append(ofn)
     saveCache('data', 'srt', cache)
+    # preset
+    for i in os.listdir('./res/export/videos'):
+        if '.mp4' in i:
+            for lang in srtlangs:
+                ifn = './res/converted/data/subtitles/%s_%s.vtt' % (i.split('.')[0], lang[1])
+                if not os.path.isfile(ifn):
+                    with open(ifn, 'w') as f:
+                        f.write('')
     print("Finished Srt.")
 
 """
