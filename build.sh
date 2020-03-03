@@ -46,7 +46,7 @@ fi
 python parse.py $1
 
 # build dist
-if [ $2 == "dist" ]; then
+if [ $2 = "dist" ]; then
   cp -r ./res/export/images ./web/public
   cp -r ./res/export/videos ./web/public
   cp -r ./res/converted/data ./web/public
