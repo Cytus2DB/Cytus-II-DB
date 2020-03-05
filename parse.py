@@ -344,16 +344,11 @@ def loadOS():
         else:
             files = {}
 
-        try:
-            os.listdir("./res/converted/data/osfiles/%s" % chara)
-        except Exception:
+        if not os.path.isdir("./res/converted/data/osfiles/%s" % chara):
             os.mkdir("./res/converted/data/osfiles/%s" % chara)
 
+        # character
         for i in cdata:
-            # get time
-            time = getTime(i["Names"][0])
-            if (time == MAX_TIME) and (len(files) > 0):
-                time = ostime[len(ostime) - 1]["time"] + 1
             # put file
             contents = []
             for content in i["Contents"]:
@@ -369,22 +364,29 @@ def loadOS():
                     "contents": contents,
                 },
             )
-            # add to filelist and timelist
+            # add to cache
             if not i["Id"].lower() in cache:
                 files[i["Id"].lower()] = {
                     "name": i["Names"][0],
                     "version": VERSION,
                 }
                 cache.append(i["Id"].lower())
-            ostime.append({
-                "id": i["Id"].lower(),
-                "time": time,
-                "name": i["Names"][0],
-                "folder": chara,
-                "version": 1,
-            })
         oslist[chara] = {"name": cnames[chara], "files": files}
         saveCache('data', 'os_%s' % chara, cache)
+
+        # timeline
+        for i in files.keys():
+            # get time
+            time = getTime(files[i]["name"])
+            if (time == MAX_TIME) and (len(ostime) > 0):
+                time = ostime[len(ostime) - 1]["time"] + 1
+            ostime.append({
+                "id": i,
+                "time": time,
+                "name": files[i]["name"],
+                "folder": chara,
+                "version": files[i]["version"],
+            })
     # save data
     ostime.sort(key=lambda x: (x["time"], x["id"].lower()))
     putJson("./res/converted/data/oslist.json", oslist)

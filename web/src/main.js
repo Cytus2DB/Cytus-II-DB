@@ -10,7 +10,7 @@ Vue.use(VueGtag, {
   config: {
     id: location.hostname.indexOf("gitee.io")==-1?"UA-159441633-1":"UA-159441633-2"
   }
-});
+}, router);
 
 // set language
 if (!localStorage['auth']) localStorage.clear(), localStorage.setItem('auth', 'OPCI_');
