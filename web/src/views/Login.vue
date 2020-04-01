@@ -6,8 +6,8 @@
       <div class="label">{{$t("login.uuid")}}</div>
     </template>
     <template v-if="fool">
-      <div class="label">Hello, we're A.R.C staff.</div>
-      <div class="label"><font :style="{color: color}">We</font> have to close this <font :style="{color: color}">love</font>ly site forever due to <font :style="{color: color}">Rayark</font>'s complaint.</div>
+      <div class="label">Hello, we're A.R.C staffs.</div>
+      <div class="label"><font :style="{color: color}">We</font> have to close this be<font :style="{color: color}">love</font>d site forever due to <font :style="{color: color}">Rayark</font>'s complaint.</div>
       <div class="label">Only the authorized ones can access this website.</div>
       <div class="label">Thanks for your cooperating.</div>
     </template>
