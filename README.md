@@ -58,18 +58,19 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 
 ## Export Instruction
 
-1.  Enable `Options > Display all assets`
-2.  Enable `Options > Display asset original name`
-3.  Enable `Options > Do not group`
-4.  Enable `Options > Export options > Convert Texture2D(PNG)`
-5.  Load folder `./res/unitybundles`
-6.  Filter `AudioClip`, `TextAsset`, `Sprite`
-7.  `Export > Filtered assets` to `./res/export`
-8.  Restart(close&open) AssetStudio 
-9.  Load folder `./res/unitydata`
-10. Export `Sprite` : `{character}_s` to `./res/export/images/characters`
-11. Export `AudioClip` : `story_*` to `./res/export/audios/story`
-12. (Optional) Export `AudioClip` : `title*`, `{character}_*` (Larger ones are full-versions) to `./res/export/audios/extra`
+1.  Enable the following options in `Options` menu.
+- `Display all assets`
+- `Display asset information(original name)`
+- `Convert Texture2D(PNG)`
+- `Group > Do not group`
+2.  Load folder `./res/unitybundles`
+3.  Filter `AudioClip`, `TextAsset`, `Sprite`
+4.  `Export > Filtered assets` to `./res/export`
+5.  Restart(close&open) AssetStudio 
+6.  Load folder `./res/unitydata`
+7.  Export `Sprite` : `{character}_s` to `./res/export/images/characters`
+8.  Export `AudioClip` : `story_*` to `./res/export/audios/story`
+9.  (Optional) Export `AudioClip` : `title*`, `{character}_*` (Larger ones are full-versions) to `./res/export/audios/extra`
 
 ## Deploy To Github Pages
 

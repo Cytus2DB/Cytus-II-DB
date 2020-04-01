@@ -4,7 +4,7 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 
 if (!localStorage['locale'])
-  localStorage.setItem('locale', navigator.language);
+  localStorage['locale'] = navigator.language;
 
 function loadLocaleMessages () {
   const locales = require.context('./locales', true, /[A-Za-z0-9-_,\s]+\.json$/i)

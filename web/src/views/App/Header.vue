@@ -112,7 +112,7 @@ export default {
   methods: {
     setLocale(locale) {
       if (this.$i18n.locale != locale){
-        localStorage.setItem('locale', locale);
+        localStorage['locale'] = locale;
         this.$i18n.locale = locale;
         this.$router.push({
           hash: this.$route.hash,

@@ -13,7 +13,7 @@ Vue.use(VueGtag, {
 }, router);
 
 // set language
-if (!localStorage['auth']) localStorage.clear(), localStorage.setItem('auth', 'OPCI_');
+if (!localStorage['auth']) localStorage.clear(), localStorage['auth'] = 'OPCI_';
 
 // mount app
 new Vue({ router, i18n, render: h => h(App) }).$mount('#app');

@@ -7,7 +7,7 @@
       <div class="video" v-if="osfile.res">
         <VideoPlayer :options="{
           video: {
-            url: `./videos/${osfile.res.toLowerCase()}`
+            url: `./videos/${osfile.res}`
           },
           subtitle: {
             url: `./data/subtitles/${osfile.res.split('.')[0].toLowerCase()}_${$i18n.locale}.vtt`
