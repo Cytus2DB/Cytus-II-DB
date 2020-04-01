@@ -449,7 +449,7 @@ def loadDB():
                 "name": mname,
                 "type": extraf[0],
                 "location": extraf[3],
-                "version": 1,
+                "version": VERSION,
             }
         dblist[extraf[2]] = { "name": extraf[2], "files": files}
         saveCache('data', 'db_%s' % extraf[2], cache)
