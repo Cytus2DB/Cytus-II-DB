@@ -64,6 +64,8 @@ def do_attachments(kind):
             im = im.resize((im.width, im.height*3//4))
         elif im.width == 515 and im.height == 1024:
             im = im.resize((im.width, im.height*7//10))
+        elif im.width == 1024 and im.height == 867:
+            im = im.resize((im.width, im.height*7//10))
         else:
             print('%s at %d x %d' % (i, im.width, im.height))
         im.convert('RGB').save('%s/%s.jpg' % (ofolder, i))
@@ -366,13 +368,13 @@ def loadOS():
                     "contents": contents,
                 },
             )
-            if i["Category"] != None and i["Category"] not in vcodes:
+            if "Category" in i.keys() and i["Category"] not in vcodes:
                 vcodes.append(i["Category"])
             # add to cache
             if i["Id"].lower() not in cache:
                 files[i["Id"].lower()] = {
                     "name": i["Names"][0],
-                    "version": i["Category"] if i["Category"] else VERSION,
+                    "version": i["Category"] if "Category" in i.keys() else VERSION,
                 }
                 cache.append(i["Id"].lower())
         oslist[chara] = {"name": cnames[chara], "files": files}

@@ -42,6 +42,11 @@ if [ ! -d "./res/converted/images" ]; then
   mkdir ./res/converted/images/osspecial
 fi
 
+if [ ! -d "./res/export/videos/TrueEndVideos" ]; then
+  mkdir ./res/export/videos/TrueEndVideos
+  mkdir ./res/export/videos/GamePlayBGVideo
+fi
+
 # script
 python parse.py $1
 
