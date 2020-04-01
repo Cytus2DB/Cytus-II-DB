@@ -4,7 +4,7 @@
         <span>{{title}}</span>
         <img src="@/assets/btn-drop.svg" alt="dropdown"/>
       </div>
-      <div :class="{ hidden }">
+      <div :class="{ hidden }" style="max-height: 300px; overflow-y: scroll;">
         <div
           class="item"
           v-for="item in items"
