@@ -15,6 +15,7 @@ BASEIM   = "./res/export/assets/game/11_im/bundleassets"
 BASEOS   = "./res/export/assets/game/15_os/bundleassets"
 
 cnames = {}
+vcodes = []
 
 """
 File Utils
@@ -330,6 +331,7 @@ def loadIM():
     print("Finished iM")
 
 def loadOS():
+    global vcodes
     res    = getJson(BASEDATA+"/cutscenedata/cutscene_data.txt")
     oslist = getJson("./res/converted/data/oslist.json")
     ostime = []
@@ -364,11 +366,13 @@ def loadOS():
                     "contents": contents,
                 },
             )
+            if i["Category"] != None and i["Category"] not in vcodes:
+                vcodes.append(i["Category"])
             # add to cache
-            if not i["Id"].lower() in cache:
+            if i["Id"].lower() not in cache:
                 files[i["Id"].lower()] = {
                     "name": i["Names"][0],
-                    "version": VERSION,
+                    "version": i["Category"] if i["Category"] else VERSION,
                 }
                 cache.append(i["Id"].lower())
         oslist[chara] = {"name": cnames[chara], "files": files}
@@ -401,7 +405,9 @@ def loadDB():
         (4, "./res/export/audios/extra", "Extra_Music", "./audios/extra"),
         (5, "./res/export/videos/extra", "Extra_Video", "./videos/extra"),
         (5, "./res/export/videos/titles", "Extra_TitleVideo", "./videos/titles"),
-        (5, "./res/export/videos/song_select", "Extra_SongSelect", "./videos/song_select")
+        (5, "./res/export/videos/song_select", "Extra_SongSelect", "./videos/song_select"),
+        (5, "./res/export/videos/TrueEndVideos", "Extra_TrueEndVideos", "./videos/TrueEndVideos"),
+        (5, "./res/export/videos/GamePlayBGVideo", "Extra_GamePlayBGVideo", "./videos/GamePlayBGVideo")
     ]
     for chara in getJson(BASEDATA+"/gallerydata/folder.txt"):
         cache = loadCache('data', 'db_%s' % chara["Id"])
@@ -450,13 +456,16 @@ def loadDB():
 
 
 def main():
+    global vcodes
+
     # version sign
-    versions = getJson('./res/converted/data/versions.json')
-    if VERSION in versions:
+    vcodes = getJson('./res/converted/data/versions.json')
+    if VERSION in vcodes:
         print("Notice: v%s exists" % VERSION)
         return
-    versions.append(VERSION)
+    vcodes.append(VERSION)
     putJson('./web/version.json', {"version": VERSION})
+
     # data
     loadChara()
     loadIM()
@@ -470,9 +479,9 @@ def main():
     do_attachments('11_im')
     do_attachments('15_os')
     do_music()
-    putJson('./res/converted/data/versions.json', versions)
     # fin
     print("Finished.")
+    putJson('./res/converted/data/versions.json', vcodes)
 
 
 if __name__ == "__main__":

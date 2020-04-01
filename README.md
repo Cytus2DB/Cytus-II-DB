@@ -50,7 +50,7 @@ If you want to release your generated website at current version, just add `dist
 
 ## Clean
 
-If you did anything wrong or you just want a fresh start, execute `./clean.sh`
+If you did anything wrong, or you just want a fresh start, execute `./clean.sh`
 
 But as the version data is stored in cache, this shouldn't be operated unless you keep your old version, or your update log will be lost.
 
@@ -62,7 +62,7 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 - `Display all assets`
 - `Display asset information(original name)`
 - `Convert Texture2D(PNG)`
-- `Group > Do not group`
+- `Group > container path` (or `do not group` before 0.14.28)
 2.  Load folder `./res/unitybundles`
 3.  Filter `AudioClip`, `TextAsset`, `Sprite`
 4.  `Export > Filtered assets` to `./res/export`
@@ -74,9 +74,9 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 
 ## Deploy To Github Pages
 
-Make sure you had added your ssh keys to your Github account.
+Make sure you have added your ssh keys to your Github account.
 
-To deploy, configure your git info in `./deploy.sh` and execute it.
+To deploy, edit git info in `./deploy.sh` and execute it.
 
 ## Announcement
 
