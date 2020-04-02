@@ -174,7 +174,6 @@ def srt2vtt(ifn, ofn):
     open(ofn, "w", encoding="utf-8").write(content)
 
 def do_srt():
-    cache = loadCache('data', 'srt')
     srtlangs  = [("en","en"),("ja","ja"),("zh","zh"),("ko","ko"),("zh","zh-TW"),("cn","zh-CN")]
     # srt2vtt
     for lang in srtlangs:
@@ -182,13 +181,7 @@ def do_srt():
         for i in os.listdir(folder):
             ifn = '%s/%s' % (folder, i)
             ofn = './res/converted/data/subtitles/%s_%s.vtt' % (i.split('.')[0], lang[1])
-            # check cache
-            if ofn in cache:
-                continue
             srt2vtt(ifn, ofn)
-            # add cache
-            cache.append(ofn)
-    saveCache('data', 'srt', cache)
     # preset
     for i in os.listdir('./res/export/videos'):
         if '.mp4' in i:
