@@ -33,7 +33,7 @@ export default {
     fool() {
       const now = new Date();
       const result = now.getMonth() == 3 && now.getDate() == 1;
-      if (result) localStorage['auth'] = "We are sorry";
+      if (result) this.input = "We are sorry";
       return result;
     }
   },
