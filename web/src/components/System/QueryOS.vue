@@ -18,6 +18,17 @@
       <div v-for="(item, index) in osfile.contents[parseInt($t('code'))]"
         :key="`${$route.params.id}_${$i18n.locale}_${index}`">
         <div class="hint" v-if="item.type=='text'" v-html="item.content"/>
+        <div class="video" v-if="item.type=='movie'">
+          <VideoPlayer :options="{
+            video: {
+              url: `./videos/${item.attrs[0].toLowerCase()}.mp4`
+            },
+            subtitle: {
+              url: `./data/subtitles/${item.attrs[0].toLowerCase()}_${$i18n.locale}.vtt`
+            },
+            autoplay: false
+          }"/>
+        </div>
         <div class="audio" v-if="item.type=='bgm'">
           <AudioPlayer theme="#2d303a" :music="{
             pic: './empty.png',
@@ -109,6 +120,12 @@ export default {
       fetch(`./data/osfiles/${this.$route.params.folder}/${this.$route.params.id}.json`).then(res => {
         this.loading = false;
         if (res.ok) res.json().then(data=>{
+          // delete duplicated cutscene
+          let firstItem = data.contents?data.contents[0]:{};
+          if (firstItem.type=="movie"&&firstItem.attrs[0]==data.res){
+            data.res = null;
+          }
+
           this.osfile = data;
         }); else {
           this.error = res.status+' '+res.statusText;
