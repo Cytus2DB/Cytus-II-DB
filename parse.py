@@ -289,6 +289,8 @@ def loadIM():
         rank = 0
         for lchara in ldata["LevelLocks"]:
             rank += lchara["Level"]
+        if ldata["StoryLockId"] != "":
+            rank = 9999
         imrank[ldata["TopicId"].lower()] = rank
     # convert imdata
     for i in imlist:
@@ -337,7 +339,7 @@ def loadOS():
     res    = getJson(BASEDATA+"/cutscenedata/cutscene_data.txt")
     oslist = getJson("./res/converted/data/oslist.json")
     ostime = []
-    if oslist == []:
+    if oslist == [] or int(VERSION.split(".")[0]) > 2:
         oslist = {}
     for cfile in os.listdir(BASEDATA+"/osdata"):
         chara = cfile.split(".")[0].lower()
@@ -347,6 +349,8 @@ def loadOS():
             files = oslist[chara]["files"]
         else:
             files = {}
+        if int(VERSION.split(".")[0]) > 2:
+            cache = []
 
         if not os.path.isdir("./res/converted/data/osfiles/%s" % chara):
             os.mkdir("./res/converted/data/osfiles/%s" % chara)
@@ -473,6 +477,7 @@ def main():
     loadIM()
     loadDB()
     loadOS()
+
     # assets
     do_srt()
     do_avatars()
@@ -481,13 +486,12 @@ def main():
     do_attachments('11_im')
     do_attachments('15_os')
     do_music()
-    # fin
-    print("Finished.")
+    vcodes.sort()
     putJson('./res/converted/data/versions.json', vcodes)
 
+    # fin
+    print("Success")
 
 if __name__ == "__main__":
-    # define version
     VERSION = sys.argv[1]
-    # run
     main()
