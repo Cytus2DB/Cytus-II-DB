@@ -14,7 +14,7 @@
               url: filepath()
             },
             subtitle: {
-              url: current().type==1?`./data/subtitles/${$route.params.id}_${$i18n.locale}.vtt`:null
+              url: current().type==1?`./data/subtitles/${$route.params.id.toLowerCase()}_${$i18n.locale}.vtt`:null
             }
           }"/>
         </div>

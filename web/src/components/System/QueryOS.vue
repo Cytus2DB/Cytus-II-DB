@@ -21,7 +21,7 @@
         <div class="video" v-if="item.type=='movie'">
           <VideoPlayer :options="{
             video: {
-              url: `./videos/${item.attrs[0].toLowerCase()}.mp4`
+              url: `./videos/${item.attrs[0]}.mp4`
             },
             subtitle: {
               url: `./data/subtitles/${item.attrs[0].toLowerCase()}_${$i18n.locale}.vtt`
