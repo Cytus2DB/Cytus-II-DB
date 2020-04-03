@@ -35,7 +35,7 @@ Follow the instruction to compile it.
 5. Use AssetStudio to export files as below
 6. Execute `./build.sh {version}`
 
-If you want to release your generated website at current version, just add `dist` after the 6th step.
+If you want to generate your website at current version, just add `dist` at the 6th step.
 
 ### Longyuan Version / 龙渊版
 
