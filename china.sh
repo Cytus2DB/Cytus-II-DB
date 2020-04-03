@@ -24,6 +24,7 @@ mkdir ./res/export/videos
 mkdir ./res/export/images
 mkdir ./res/export/audios/extra
 mkdir ./res/export/audios/story
+mkdir ./res/export/videos/end
 mkdir ./res/export/videos/extra
 mkdir ./res/export/videos/titles
 mkdir ./res/export/videos/song_select
@@ -50,6 +51,18 @@ echo "Migrated Unity."
 mv ./res/apk/assets/AssetBundles/* ./res/unitybundles
 
 # raw assets
+rm -rf ./res/apk/assets/RawAssets/Click*.mp4
+
+if [ -d "./res/apk/assets/bin/" ]; then
+  rm -rf ./res/apk/assets/RawAssets/GamePlayBGVideo/FinalBossStage.mp4
+  mv ./res/apk/assets/RawAssets/GamePlayBGVideo/*.mp4 ./res/export/videos/end
+  rm -rf ./res/apk/assets/RawAssets/GamePlayBGVideo
+fi
+
+mv ./res/apk/assets/RawAssets/*_ending*.mp4 ./res/export/videos/end
+mv ./res/apk/assets/RawAssets/*Cutscene.mp4 ./res/export/videos/end
+mv ./res/apk/assets/RawAssets/eos*.mp4      ./res/export/videos/end
+
 mv ./res/apk/assets/RawAssets/*        ./res/export/videos
 mv ./res/apk/assets/Titles/*           ./res/export/videos/titles
 mv ./res/apk/assets/*_song_select.mp4  ./res/export/videos/song_select

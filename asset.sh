@@ -24,6 +24,7 @@ mkdir ./res/export/videos
 mkdir ./res/export/images
 mkdir ./res/export/audios/extra
 mkdir ./res/export/audios/story
+mkdir ./res/export/videos/end
 mkdir ./res/export/videos/extra
 mkdir ./res/export/videos/titles
 mkdir ./res/export/videos/song_select
@@ -47,6 +48,18 @@ echo "Migrated Unity."
 mv ./res/obb/assets/AssetBundles/* ./res/unitybundles
 
 # obb.raw
+rm -rf ./res/obb/assets/RawAssets/Click*.mp4
+
+if [ -d "./res/obb/assets/bin/" ]; then
+  rm -rf ./res/obb/assets/RawAssets/GamePlayBGVideo/FinalBossStage.mp4
+  mv ./res/obb/assets/RawAssets/GamePlayBGVideo/*.mp4 ./res/export/videos/end
+  rm -rf ./res/obb/assets/RawAssets/GamePlayBGVideo
+fi
+
+mv ./res/obb/assets/RawAssets/*_ending*.mp4 ./res/export/videos/end
+mv ./res/obb/assets/RawAssets/*Cutscene.mp4 ./res/export/videos/end
+mv ./res/obb/assets/RawAssets/eos*.mp4      ./res/export/videos/end
+
 mv ./res/obb/assets/RawAssets/*        ./res/export/videos
 mv ./res/obb/assets/Titles/*           ./res/export/videos/titles
 mv ./res/obb/assets/*_song_select.mp4  ./res/export/videos/song_select

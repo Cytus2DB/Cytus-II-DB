@@ -6,11 +6,11 @@ Donate: [爱发电](https://afdian.net/@dtsdao) / [Patreon](https://www.patreon.
 
 ## Requirements
 
-This program can be executed on Linux/Windows/macOS.
+This program can be executed on Linux / Windows / macOS.
 
-You must have at least 5 GB free space on your current disk.
+You must have at least 5 GB free space.
 
-Make sure you have installed these softwares on your PC:
+These softwares are required:
 
 - Git
 - Zip
@@ -22,9 +22,9 @@ Make sure you have installed these softwares on your PC:
 
 ## Compile
 
-Compiling is not the "compiling", it means translating the original files to readable datasheets.
+Compiling is to translate the original files to readable datasheets.
 
-It can be accomplished easily with tools here.
+Follow the instruction to compile it.
 
 ### Google Play Version
 
@@ -50,11 +50,11 @@ If you want to release your generated website at current version, just add `dist
 
 ## Clean
 
-If you did anything wrong, or you just want a fresh start, execute `./clean.sh`
+If you you want a fresh start, execute `./clean.sh`
 
-But as the version data is stored in cache, this shouldn't be operated unless you keep your old version, or your update log will be lost.
+Remember, converting audios needs a long time, so keep your cache as possible.
 
-BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can delete the cache data of any certain module as you wish.
+You can delete the cache of any module as you wish. They are stored in `./res/converted/*` and `./res/cache_*.json`.
 
 ## Export Instruction
 
@@ -62,7 +62,7 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 - `Display all assets`
 - `Display asset information(original name)`
 - `Convert Texture2D(PNG)`
-- `Group > container path` (or `do not group` before 0.14.28)
+- `Group > container path` (or `do not group` before 0.14.11)
 2.  Load folder `./res/unitybundles`
 3.  Filter `AudioClip`, `TextAsset`, `Sprite`
 4.  `Export > Filtered assets` to `./res/export`
@@ -70,13 +70,13 @@ BTW, the stored files are `./res/converted/*` and `./res/cache_*.json`, you can 
 6.  Load folder `./res/unitydata`
 7.  Export `Sprite` : `{character}_s` to `./res/export/images/characters`
 8.  Export `AudioClip` : `story_*` to `./res/export/audios/story`
-9.  (Optional) Export `AudioClip` : `title*`, `{character}_*` (Larger ones are full-versions) to `./res/export/audios/extra`
+9.  (Optional) Export `AudioClip` : `title*`, `ending*`, `{character}_*` to `./res/export/audios/extra`
 
 ## Deploy To Github Pages
 
 Make sure you have added your ssh keys to your Github account.
 
-To deploy, edit git info in `./deploy.sh` and execute it.
+To deploy, edit `./deploy.sh` and execute it.
 
 ## Announcement
 
