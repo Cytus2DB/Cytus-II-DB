@@ -403,10 +403,10 @@ def loadDB():
     extrafs = [
         (4, "./res/export/audios/extra", "Extra_Music", "./audios/extra"),
         (5, "./res/export/videos/extra", "Extra_Video", "./videos/extra"),
+        (5, "./res/export/videos/story", "Extra_StoryVideo", "./videos/story"),
         (5, "./res/export/videos/titles", "Extra_TitleVideo", "./videos/titles"),
         (5, "./res/export/videos/song_select", "Extra_SongSelect", "./videos/song_select"),
         (5, "./res/export/videos/TrueEndVideos", "Extra_TrueEndVideos", "./videos/TrueEndVideos"),
-        (5, "./res/export/videos/GamePlayBGVideo", "Extra_GamePlayBGVideo", "./videos/GamePlayBGVideo")
     ]
     for chara in getJson(BASEDATA+"/gallerydata/folder.txt"):
         cache = loadCache('data', 'db_%s' % chara["Id"])
