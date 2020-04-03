@@ -26,14 +26,13 @@ export default {
   data() {
     return {
       color: 'white',
-      input: localStorage['auth'],
+      input: this.fool?"We are sorry":localStorage['auth'],
     }
   },
   computed: {
     fool() {
       const now = new Date();
       const result = now.getMonth() == 3 && now.getDate() == 1;
-      if (result) this.input = "We are sorry";
       return result;
     }
   },
