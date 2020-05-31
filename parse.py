@@ -122,10 +122,12 @@ def do_imageviewer():
             continue
         # convert
         im = Image.open(ifn)
-        if fid == 'pos2401' or fid == 'aios1101':
+        if fid == 'pos2401':
             im = im.resize((im.width, im.height*1080//1920))
         elif fid == 'ros1401':
             im = im.resize((im.width, im.height*4800//7200))
+        elif fid == 'aios1101':
+            im = im.resize((im.width, im.height*7//10))
         else:
             print('%s at %d x %d' % (i, im.width, im.height))
         im.convert('RGB').save(ofn)
