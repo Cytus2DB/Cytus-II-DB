@@ -81,12 +81,14 @@ export default {
           return `./audios/story/${this.$route.params.id}.mp3`;
         case 3:
           return ``;
+        case 4:
+          return ``;
         case 5:
           return `${this.current().location}/${this.$route.params.id}.mp4`;
         case 6:
           return `${this.current().location}/${this.$route.params.id}.mp3`;
         default:
-          return 0;
+          return ``;
       }
     },
     fetchData() {
