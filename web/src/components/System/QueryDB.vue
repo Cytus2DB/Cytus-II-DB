@@ -18,7 +18,7 @@
             }
           }"/>
         </div>
-        <div class="audio" v-if="current().type==2||current().type==4">
+        <div class="audio" v-if="current().type==2||current().type==6">
           <AudioPlayer theme="#2d303a" :music="{
             pic: './empty.png',
             src: filepath(),

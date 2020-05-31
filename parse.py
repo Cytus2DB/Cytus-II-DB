@@ -401,9 +401,9 @@ def loadDB():
     if dblist == []:
         dblist = {}
     extrafs = [
-        (4, "./res/export/audios/extra", "Extra_Music", "./audios/extra"),
+        (6, "./res/export/audios/extra", "Extra_Music", "./audios/extra"),
         (5, "./res/export/videos/extra", "Extra_Video", "./videos/extra"),
-        (5, "./res/export/videos/story", "Extra_StoryVideo", "./videos/story"),
+        (1, "./res/export/videos/story", "Extra_StoryVideo", "./videos"),
         (5, "./res/export/videos/titles", "Extra_TitleVideo", "./videos/titles"),
         (5, "./res/export/videos/song_select", "Extra_SongSelect", "./videos/song_select"),
         (5, "./res/export/videos/TrueEndVideos", "Extra_TrueEndVideos", "./videos/TrueEndVideos"),
