@@ -5,7 +5,7 @@
     <template v-if="!loading&&$route.params.folder">
       <div class="info">
         {{$t('db.filename')}}: {{current().name}}<br>
-        <a target="_blank" :href="filepath()">{{$t('db.download')}}</a>
+        <a target="_blank" v-if="filepath()" :href="filepath()">{{$t('db.download')}}</a>
       </div>
       <div class="content">
         <div class="video" v-if="current().type==1||current().type==5">
@@ -80,15 +80,15 @@ export default {
         case 2:
           return `./audios/story/${this.$route.params.id}.mp3`;
         case 3:
-          return ``;
+          return false;
         case 4:
-          return ``;
+          return false;
         case 5:
           return `${this.current().location}/${this.$route.params.id}.mp4`;
         case 6:
           return `${this.current().location}/${this.$route.params.id}.mp3`;
         default:
-          return ``;
+          return false;
       }
     },
     fetchData() {
