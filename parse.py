@@ -64,7 +64,7 @@ def do_attachments(kind):
             im = im.resize((im.width, im.height*3//4))
         elif im.width == 515 and im.height == 1024:
             im = im.resize((im.width, im.height*7//10))
-        elif im.width == 1024 and im.height == 867:
+        elif im.width == 1024 and im.height in [867, 868, 869]:
             im = im.resize((im.width, im.height*7//10))
         else:
             print('%s at %d x %d' % (i, im.width, im.height))
@@ -122,7 +122,7 @@ def do_imageviewer():
             continue
         # convert
         im = Image.open(ifn)
-        if fid == 'pos2401':
+        if fid == 'pos2401' or fid == 'aios1101':
             im = im.resize((im.width, im.height*1080//1920))
         elif fid == 'ros1401':
             im = im.resize((im.width, im.height*4800//7200))
@@ -403,7 +403,7 @@ def loadDB():
     extrafs = [
         (4, "./res/export/audios/extra", "Extra_Music", "./audios/extra"),
         (5, "./res/export/videos/extra", "Extra_Video", "./videos/extra"),
-        (1, "./res/export/videos/story", "Extra_StoryVideo", "./videos/story"),
+        (5, "./res/export/videos/story", "Extra_StoryVideo", "./videos/story"),
         (5, "./res/export/videos/titles", "Extra_TitleVideo", "./videos/titles"),
         (5, "./res/export/videos/song_select", "Extra_SongSelect", "./videos/song_select"),
         (5, "./res/export/videos/TrueEndVideos", "Extra_TrueEndVideos", "./videos/TrueEndVideos"),
