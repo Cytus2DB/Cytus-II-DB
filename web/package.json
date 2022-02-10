@@ -16,7 +16,7 @@
     "js-md5": "^0.7.3",
     "lodash": "^4.17.19",
     "minimist": "^1.2.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "vue": "^2.6.11",
     "vue-aplayer": "^1.6.1",
     "vue-dplayer": "0.0.10",
